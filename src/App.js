@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import IconRefresh from './icon_refresh.svg';
 
 const axios = require('axios');
 const { log } = console;
@@ -45,6 +46,11 @@ class App extends React.Component {
     this.state = { stocks: [] };
   }
 
+  async reloadStockPrices() {
+    let stocks = await getRealtimeData(["XEI", "ZQQ", "VFV"]);
+    this.setState({ stocks });
+  }
+
   async componentDidMount() {
     let stocks = await getRealtimeData(["SHOP", "VRE", "ZRE"]);
     this.setState({ stocks });
@@ -53,31 +59,38 @@ class App extends React.Component {
   render() {
     let { stocks } = this.state;
     return (
-      <div class="table-container">
-        <table aria-label="customized table">
-          <thead>
-            <tr class="table-header">
-              <th>Ticker</th>
-              <th align="center">Price</th>
-              <th align="center">Previous Close</th>
-              <th align="center">Change (%)</th>
-              <th align="center">Volume</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stocks.map((stock) => (
-              <tr key={stock.symbol}>
-                <td>
-                  {stock.symbol}
-                </td>
-                <td align="center">{stock.price}</td>
-                <td align="center">{stock.prevClose}</td>
-                <td align="center">{stock.percentChange}</td>
-                <td align="center">{stock.volume}</td>
+      <div className="page">
+        <div className="settings clearfix">
+          <div className="reload-btn pull-right" onClick={this.reloadStockPrices.bind(this)}>
+            <img src={IconRefresh} alt="Reload" />
+          </div>
+        </div>
+        <div className="table-container">
+          <table aria-label="customized table">
+            <thead>
+              <tr className="table-header">
+                <th>Ticker</th>
+                <th align="center">Price</th>
+                <th align="center">Previous Close</th>
+                <th align="center">Change (%)</th>
+                <th align="center">Volume</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {stocks.map((stock) => (
+                <tr key={stock.symbol}>
+                  <td>
+                    {stock.symbol}
+                  </td>
+                  <td align="center">{stock.price}</td>
+                  <td align="center">{stock.prevClose}</td>
+                  <td align="center">{stock.percentChange}</td>
+                  <td align="center">{stock.volume}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
