@@ -1,12 +1,5 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import './App.css';
 
 const axios = require('axios');
 const { log } = console;
@@ -46,30 +39,6 @@ const getRealtimeData = async (stocksList) => {
   }
 };
 
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
-
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 700,
-//   },
-// });
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -77,7 +46,6 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    // this.setState({ stocks: [] });
     let stocks = await getRealtimeData(["SHOP", "VRE", "ZRE"]);
     this.setState({ stocks });
   }
@@ -85,32 +53,32 @@ class App extends React.Component {
   render() {
     let { stocks } = this.state;
     return (
-      <TableContainer component={Paper}>
-        <Table aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Ticker</StyledTableCell>
-              <StyledTableCell align="right">Company</StyledTableCell>
-              <StyledTableCell align="right">Price</StyledTableCell>
-              <StyledTableCell align="right">% Change</StyledTableCell>
-              <StyledTableCell align="right">Volume</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
+      <div class="table-container">
+        <table aria-label="customized table">
+          <thead>
+            <tr class="table-header">
+              <th>Ticker</th>
+              <th align="center">Price</th>
+              <th align="center">Previous Close</th>
+              <th align="center">Change (%)</th>
+              <th align="center">Volume</th>
+            </tr>
+          </thead>
+          <tbody>
             {stocks.map((stock) => (
-              <StyledTableRow key={stock.symbol}>
-                <StyledTableCell component="th" scope="row">
+              <tr key={stock.symbol}>
+                <td>
                   {stock.symbol}
-                </StyledTableCell>
-                <StyledTableCell align="right">{stock.longname}</StyledTableCell>
-                <StyledTableCell align="right">{stock.price}</StyledTableCell>
-                <StyledTableCell align="right">{stock.percentChange}</StyledTableCell>
-                <StyledTableCell align="right">{stock.volume}</StyledTableCell>
-              </StyledTableRow>
+                </td>
+                <td align="center">{stock.price}</td>
+                <td align="center">{stock.prevClose}</td>
+                <td align="center">{stock.percentChange}</td>
+                <td align="center">{stock.volume}</td>
+              </tr>
             ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
