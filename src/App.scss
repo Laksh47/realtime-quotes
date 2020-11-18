@@ -1,0 +1,90 @@
+/* vars */
+$fg-color: #e7e2e2;
+$bg-color: #161616;
+
+$bull-color: #6ce41d;
+$bear-color: #f10c0c;
+
+$link-color: #ea9d9d;
+
+/* common CSS */
+
+html,
+body {
+  min-width: 500px;
+  min-height: 500px;
+  background-color: $bg-color;
+  color: $fg-color;
+}
+
+a {
+  color: $link-color;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.truncate {
+  width: 150px;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.truncate:hover {
+  overflow: visible;
+}
+
+.truncate:hover span {
+  position: relative;
+  box-shadow: 0 0 4px 0 #f7f4f4;
+  padding: 5px;
+  border-radius: 1px;
+}
+
+.reload-btn {
+  cursor: pointer;
+
+  svg {
+    fill: $fg-color;
+  }
+}
+
+.bull {
+  color: $bull-color;
+}
+
+.bear {
+  color: $bear-color;
+}
+
+/* Settings bar CSS */
+.settings {
+  padding: 20px;
+}
+
+/* Component specific CSS */
+.index:first-child {
+  border-top: 1px solid $fg-color;
+}
+
+.index {
+  padding: 10px;
+  border-bottom: 1px solid $fg-color;
+}
+
+.index span {
+  padding: 5px;
+}

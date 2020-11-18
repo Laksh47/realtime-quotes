@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import IconRefresh from './icon_refresh.svg';
+import './App.scss';
+import { ReactComponent as IconRefresh } from './icon_refresh.svg';
 
 const axios = require('axios');
 const { log } = console;
@@ -40,6 +40,8 @@ const getRealtimeData = async (stocksList) => {
   }
 };
 
+const indices = ["^TSX", "^JX:CA", "^COMPX:US", "^NYA:US", "^SPX:US"];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -47,12 +49,12 @@ class App extends React.Component {
   }
 
   async reloadStockPrices() {
-    let stocks = await getRealtimeData(["XEI", "ZQQ", "VFV"]);
+    let stocks = await getRealtimeData(indices);
     this.setState({ stocks });
   }
 
   async componentDidMount() {
-    let stocks = await getRealtimeData(["SHOP", "VRE", "ZRE"]);
+    let stocks = await getRealtimeData(indices);
     this.setState({ stocks });
   }
 
@@ -61,35 +63,35 @@ class App extends React.Component {
     return (
       <div className="page">
         <div className="settings clearfix">
+          <div className="pull-left">
+            Market Indices
+          </div>
           <div className="reload-btn pull-right" onClick={this.reloadStockPrices.bind(this)}>
-            <img src={IconRefresh} alt="Reload" />
+            <IconRefresh />
           </div>
         </div>
-        <div className="table-container">
-          <table aria-label="customized table">
-            <thead>
-              <tr className="table-header">
-                <th>Ticker</th>
-                <th align="center">Price</th>
-                <th align="center">Previous Close</th>
-                <th align="center">Change (%)</th>
-                <th align="center">Volume</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stocks.map((stock) => (
-                <tr key={stock.symbol}>
-                  <td>
-                    {stock.symbol}
-                  </td>
-                  <td align="center">{stock.price}</td>
-                  <td align="center">{stock.prevClose}</td>
-                  <td align="center">{stock.percentChange}</td>
-                  <td align="center">{stock.volume}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="indices">
+          {stocks.map((stock) => (
+            <div className="index">
+              <div className="first-row clearfix">
+                <span className="pull-left truncate">
+                  <span>{stock.longname}</span>
+                </span>
+                <span className="current-price pull-right">{stock.price}</span>
+              </div>
+              <div className="second-row clearfix">
+              <span className="ticker pull-left">
+                <a target="_blank" rel="noreferrer" href={"https://money.tmx.com/en/quote/"+stock.symbol}>
+                  {stock.symbol}
+                </a>
+              </span>
+                {stock.priceChange >= 0
+                  ? <span className="change bull pull-right">+{stock.priceChange} (+{stock.percentChange}%)</span>
+                  : <span className="change bear pull-right">{stock.priceChange} ({stock.percentChange}%)</span>
+                }
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );
