@@ -88,3 +88,31 @@ a {
 .index span {
   padding: 5px;
 }
+
+// Tabs CSS
+.tabs-nav.nav.navbar-nav.navbar-left {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.tab {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.tab-link.custom-link {
+  background: #6161a7;
+  color: white;
+  border-radius: 100px;
+  padding: 10px;
+  line-height: 30px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tab-link.custom-link.active {
+  background: #969696;
+}

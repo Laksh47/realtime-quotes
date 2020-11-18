@@ -1,10 +1,22 @@
 import React from "react";
 import "./App.scss";
-import Market from "./components/market-summary/MarketSummary";
+import Tab from "./common/Tab";
+import Tabs from "./common/Tabs";
+import MarketSummary from "./components/market-summary/MarketSummary";
+import Watchlist from "./components/watchlist/Watchlist";
 
 class App extends React.Component {
   render() {
-    return <Market />;
+    return (
+      <Tabs>
+        <Tab tabName={"Market Summary"} linkClassName={"custom-link"}>
+          <MarketSummary />
+        </Tab>
+        <Tab tabName={"Watchlist"} linkClassName={"custom-link"}>
+          <Watchlist />
+        </Tab>
+      </Tabs>
+    );
   }
 }
 
