@@ -14,7 +14,7 @@ class Tab extends React.Component {
 
   render() {
     return (
-      <li className="tab">
+      <div className="tab">
         <span
           className={`tab-link ${this.props.linkClassName} ${
             this.props.isActive ? "active" : ""
@@ -23,7 +23,7 @@ class Tab extends React.Component {
         >
           {this.props.tabName}
         </span>
-      </li>
+      </div>
     );
   }
 }

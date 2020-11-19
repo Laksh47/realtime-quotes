@@ -74,8 +74,8 @@ class MarketSummary extends React.Component {
           </div>
         </div>
         <div className="indices">
-          {stocks.map((stock) => (
-            <div className="index">
+          {stocks.map((stock, index) => (
+            <div className="index" key={index}>
               <div className="first-row clearfix">
                 <span className="pull-left truncate">
                   <span>{stock.longname}</span>
