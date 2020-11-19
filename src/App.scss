@@ -1,4 +1,4 @@
-/* vars */
+/* color vars */
 $light-color: #e7e2e2;
 $dark-color: #161616;
 
@@ -13,8 +13,7 @@ $link-color: #ea9d9d;
 
 $box-shadow-color: #f7f4f4;
 
-/* common CSS */
-
+/* common css */
 html,
 body {
   min-width: 500px;
@@ -76,12 +75,12 @@ a {
   color: $bear-color;
 }
 
-/* Settings bar CSS */
+/* settings bar css */
 .settings {
   padding: 20px;
 }
 
-/* Component specific CSS */
+/* market component css */
 .index:first-child {
   border-top: 1px solid $light-color;
 }
@@ -95,7 +94,7 @@ a {
   padding: 5px;
 }
 
-// Tabs CSS
+// tabs css
 .tabs-nav.nav.navbar-nav.navbar-left {
   margin: 0px;
   padding: 0px;
