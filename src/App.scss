@@ -93,26 +93,34 @@ a {
 .tabs-nav.nav.navbar-nav.navbar-left {
   margin: 0px;
   padding: 0px;
-  list-style: none;
+  display: flex;
 }
 
 .tab {
   display: inline-block;
-  padding: 10px;
-  margin-right: 5px;
+  width: 50%;
+
+  &:after {
+    content: "";
+    border-top: 2px solid;
+    display: block;
+    border-top: 2px solid #93c39d;
+  }
 }
 
-.tab-link.custom-link {
-  background: #6161a7;
-  color: white;
-  border-radius: 100px;
-  padding: 10px;
+.tab.active {
+  span {
+    background-color: #212021;
+    color: white;
+  }
+}
+
+.tab-link {
+  background: #ecf0f1;
+  color: rgb(39, 38, 38);
+  padding: 10px 20px;
   line-height: 30px;
   display: block;
   text-align: center;
   cursor: pointer;
-}
-
-.tab-link.custom-link.active {
-  background: #969696;
 }
