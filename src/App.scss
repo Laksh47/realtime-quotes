@@ -1,11 +1,17 @@
 /* vars */
-$fg-color: #e7e2e2;
-$bg-color: #161616;
+$light-color: #e7e2e2;
+$dark-color: #161616;
+
+$tab-border-color: #93c39d;
+$tab-bg-color: #ecf0f1;
+$tab-active-bg-color: #212021;
 
 $bull-color: #6ce41d;
 $bear-color: #f10c0c;
 
 $link-color: #ea9d9d;
+
+$box-shadow-color: #f7f4f4;
 
 /* common CSS */
 
@@ -13,8 +19,8 @@ html,
 body {
   min-width: 500px;
   min-height: 500px;
-  background-color: $bg-color;
-  color: $fg-color;
+  background-color: $dark-color;
+  color: $light-color;
 }
 
 a {
@@ -49,7 +55,7 @@ a {
 
 .truncate:hover span {
   position: relative;
-  box-shadow: 0 0 4px 0 #f7f4f4;
+  box-shadow: 0 0 4px 0 $box-shadow-color;
   padding: 5px;
   border-radius: 1px;
 }
@@ -58,7 +64,7 @@ a {
   cursor: pointer;
 
   svg {
-    fill: $fg-color;
+    fill: $light-color;
   }
 }
 
@@ -77,12 +83,12 @@ a {
 
 /* Component specific CSS */
 .index:first-child {
-  border-top: 1px solid $fg-color;
+  border-top: 1px solid $light-color;
 }
 
 .index {
   padding: 10px;
-  border-bottom: 1px solid $fg-color;
+  border-bottom: 1px solid $light-color;
 }
 
 .index span {
@@ -104,20 +110,20 @@ a {
     content: "";
     border-top: 2px solid;
     display: block;
-    border-top: 2px solid #93c39d;
+    border-top: 2px solid $tab-border-color;
   }
 }
 
 .tab.active {
   span {
-    background-color: #212021;
-    color: white;
+    background-color: $tab-active-bg-color;
+    color: $light-color;
   }
 }
 
 .tab-link {
-  background: #ecf0f1;
-  color: rgb(39, 38, 38);
+  background-color: $tab-bg-color;
+  color: $dark-color;
   padding: 10px 20px;
   line-height: 30px;
   display: block;
