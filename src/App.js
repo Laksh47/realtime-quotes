@@ -1,97 +1,25 @@
-import React from 'react';
-import './App.css';
-import IconRefresh from './icon_refresh.svg';
-
-const axios = require('axios');
-const { log } = console;
-
-// refer => https://stackoverflow.com/questions/43262121/trying-to-use-fetch-and-pass-in-mode-no-cors/43268098#43268098
-// https://github.com/Rob--W/cors-anywhere/
-var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-    targetUrl = 'https://app-money.tmx.com/graphql'
-
-const getStocksConfig = (stocksList) => {
-  const data = JSON.stringify({
-    "operationName": "getQuoteForSymbols",
-    "variables":{
-      "symbols": stocksList
-    },
-    "query": "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    longname\n    price\n    volume\n    openPrice\n    priceChange\n    percentChange\n    dayHigh\n    dayLow\n    prevClose\n    __typename\n  }\n}\n"
-  });
-
-  return {
-    method: 'post',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    data
-  };
-};
-
-const getRealtimeData = async (stocksList) => {
-  try {
-    const response = await axios(proxyUrl + targetUrl, getStocksConfig(stocksList));
-    return response["data"]["data"]["getQuoteForSymbols"];
-  }
-  catch (err) {
-    log(err);
-    return [];
-  }
-};
+import React from "react";
+import "./App.scss";
+import Tab from "./common/Tab";
+import Tabs from "./common/Tabs";
+import MarketSummary from "./components/market-summary/MarketSummary";
+import Watchlist from "./components/watchlist/Watchlist";
+import Wealthsimple from "./components/wealthsimple/Wealthsimple";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { stocks: [] };
-  }
-
-  async reloadStockPrices() {
-    let stocks = await getRealtimeData(["XEI", "ZQQ", "VFV"]);
-    this.setState({ stocks });
-  }
-
-  async componentDidMount() {
-    let stocks = await getRealtimeData(["SHOP", "VRE", "ZRE"]);
-    this.setState({ stocks });
-  }
-
   render() {
-    let { stocks } = this.state;
     return (
-      <div className="page">
-        <div className="settings clearfix">
-          <div className="reload-btn pull-right" onClick={this.reloadStockPrices.bind(this)}>
-            <img src={IconRefresh} alt="Reload" />
-          </div>
-        </div>
-        <div className="table-container">
-          <table aria-label="customized table">
-            <thead>
-              <tr className="table-header">
-                <th>Ticker</th>
-                <th align="center">Price</th>
-                <th align="center">Previous Close</th>
-                <th align="center">Change (%)</th>
-                <th align="center">Volume</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stocks.map((stock) => (
-                <tr key={stock.symbol}>
-                  <td>
-                    {stock.symbol}
-                  </td>
-                  <td align="center">{stock.price}</td>
-                  <td align="center">{stock.prevClose}</td>
-                  <td align="center">{stock.percentChange}</td>
-                  <td align="center">{stock.volume}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <Tabs>
+        <Tab tabName={"Market Summary"}>
+          <MarketSummary />
+        </Tab>
+        <Tab tabName={"Watchlist"}>
+          <Watchlist />
+        </Tab>
+        <Tab tabName={"Wealthsimple"}>
+          <Wealthsimple />
+        </Tab>
+      </Tabs>
     );
   }
 }

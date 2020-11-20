@@ -1,0 +1,131 @@
+/* color vars */
+$light-color: #e7e2e2;
+$dark-color: #161616;
+
+$tab-border-color: #93c39d;
+$tab-bg-color: #ecf0f1;
+$tab-active-bg-color: #212021;
+
+$bull-color: #6ce41d;
+$bear-color: #f10c0c;
+
+$link-color: #ea9d9d;
+
+$box-shadow-color: #f7f4f4;
+
+/* common css */
+html,
+body {
+  min-width: 500px;
+  min-height: 500px;
+  background-color: $dark-color;
+  color: $light-color;
+}
+
+a {
+  color: $link-color;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.truncate {
+  width: 150px;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.truncate:hover {
+  overflow: visible;
+}
+
+.truncate:hover span {
+  position: relative;
+  box-shadow: 0 0 4px 0 $box-shadow-color;
+  padding: 5px;
+  border-radius: 1px;
+}
+
+.reload-btn {
+  cursor: pointer;
+
+  svg {
+    fill: $light-color;
+  }
+}
+
+.bull {
+  color: $bull-color;
+}
+
+.bear {
+  color: $bear-color;
+}
+
+/* settings bar css */
+.settings {
+  padding: 20px;
+}
+
+/* market component css */
+.index:first-child {
+  border-top: 1px solid $light-color;
+}
+
+.index {
+  padding: 10px;
+  border-bottom: 1px solid $light-color;
+}
+
+.index span {
+  padding: 5px;
+}
+
+// tabs css
+.tabs-nav.nav.navbar-nav.navbar-left {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+}
+
+.tab {
+  display: inline-block;
+  width: 50%;
+
+  &:after {
+    content: "";
+    border-top: 2px solid;
+    display: block;
+    border-top: 2px solid $tab-border-color;
+  }
+}
+
+.tab.active {
+  span {
+    background-color: $tab-active-bg-color;
+    color: $light-color;
+  }
+}
+
+.tab-link {
+  background-color: $tab-bg-color;
+  color: $dark-color;
+  padding: 10px 20px;
+  line-height: 30px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
