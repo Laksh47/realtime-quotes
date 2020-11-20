@@ -4,10 +4,7 @@ import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
 const axios = require("axios");
 const { log } = console;
 
-// refer => https://stackoverflow.com/questions/43262121/trying-to-use-fetch-and-pass-in-mode-no-cors/43268098#43268098
-// https://github.com/Rob--W/cors-anywhere/
-var proxyUrl = "https://cors-anywhere.herokuapp.com/",
-  targetUrl = "https://app-money.tmx.com/graphql";
+const targetUrl = "https://app-money.tmx.com/graphql";
 
 const getStocksConfig = (stocksList) => {
   const data = JSON.stringify({
@@ -31,10 +28,7 @@ const getStocksConfig = (stocksList) => {
 
 const getRealtimeData = async (stocksList) => {
   try {
-    const response = await axios(
-      proxyUrl + targetUrl,
-      getStocksConfig(stocksList)
-    );
+    const response = await axios(targetUrl, getStocksConfig(stocksList));
     return response["data"]["data"]["getQuoteForSymbols"];
   } catch (err) {
     log(err);

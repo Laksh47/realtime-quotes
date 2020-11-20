@@ -15,5 +15,5 @@
     "128": "logo512.png"
   },
   "content_security_policy": "script-src 'self' 'sha256-fKyxbuBNJMTEFhmRjyx1xUpwDo1UaKSlIlbp7fRpmws='; object-src 'self'",
-  "permissions": []
+  "permissions": ["*://*.tmx.com/*"]
 }
