@@ -4,7 +4,6 @@ import Tab from "./common/Tab";
 import Tabs from "./common/Tabs";
 import MarketSummary from "./components/market-summary/MarketSummary";
 import Watchlist from "./components/watchlist/Watchlist";
-import Wealthsimple from "./components/wealthsimple/Wealthsimple";
 
 class App extends React.Component {
   render() {
@@ -15,9 +14,6 @@ class App extends React.Component {
         </Tab>
         <Tab tabName={"Watchlist"}>
           <Watchlist />
-        </Tab>
-        <Tab tabName={"Wealthsimple"}>
-          <Wealthsimple />
         </Tab>
       </Tabs>
     );
