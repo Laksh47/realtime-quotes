@@ -1,40 +1,8 @@
 import React from "react";
 import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
+import WebTMX from "../../adapters/webtmx";
 
-const axios = require("axios");
-const { log } = console;
-
-const targetUrl = "https://app-money.tmx.com/graphql";
-
-const getStocksConfig = (stocksList) => {
-  const data = JSON.stringify({
-    operationName: "getQuoteForSymbols",
-    variables: {
-      symbols: stocksList,
-    },
-    query:
-      "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    longname\n    price\n    volume\n    openPrice\n    priceChange\n    percentChange\n    dayHigh\n    dayLow\n    prevClose\n    __typename\n  }\n}\n",
-  });
-
-  return {
-    method: "post",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    data,
-  };
-};
-
-const getRealtimeData = async (stocksList) => {
-  try {
-    const response = await axios(targetUrl, getStocksConfig(stocksList));
-    return response["data"]["data"]["getQuoteForSymbols"];
-  } catch (err) {
-    log(err);
-    return [];
-  }
-};
+// const { getRealtimeData } = require("../../adapters/webtmx");
 
 const indices = ["^TSX", "^JX:CA", "^COMPX:US", "^NYA:US", "^SPX:US"];
 
@@ -45,12 +13,12 @@ class MarketSummary extends React.Component {
   }
 
   async reloadStockPrices() {
-    let stocks = await getRealtimeData(indices);
+    let stocks = await WebTMX.getRealtimeData(indices);
     this.setState({ stocks });
   }
 
   async componentDidMount() {
-    let stocks = await getRealtimeData(indices);
+    let stocks = await WebTMX.getRealtimeData(indices);
     this.setState({ stocks });
   }
 
@@ -72,7 +40,7 @@ class MarketSummary extends React.Component {
             <div className="index" key={index}>
               <div className="first-row clearfix">
                 <span className="pull-left truncate">
-                  <span>{stock.longname}</span>
+                  <span>{stock.companyName}</span>
                 </span>
                 <span className="current-price pull-right">{stock.price}</span>
               </div>
@@ -81,9 +49,12 @@ class MarketSummary extends React.Component {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href={"https://money.tmx.com/en/quote/" + stock.symbol}
+                    href={
+                      "https://www.google.com/search?q=" +
+                      encodeURIComponent(stock.companyName + " share price")
+                    }
                   >
-                    {stock.symbol}
+                    {stock.ticker}
                   </a>
                 </span>
                 {stock.priceChange >= 0 ? (
