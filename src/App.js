@@ -12,7 +12,7 @@ class App extends React.Component {
         <Tab tabName={"Market Summary"}>
           <MarketSummary />
         </Tab>
-        <Tab tabName={"Watchlist"}>
+        <Tab tabName={"Portfolio"}>
           <Watchlist />
         </Tab>
       </Tabs>

@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
+import { SemipolarLoading } from 'react-loadingg';
 import yahoo from "../../adapters/yahoo";
 import WebTMX from "../../adapters/webtmx";
 
@@ -15,6 +16,9 @@ class MarketSummary extends React.Component {
   }
 
   async reloadStockPrices() {
+
+    this.setState({ stocks: [] });
+    await new Promise(r => setTimeout(r, 400));
     let stocks = await Promise.race(asyncFunctions);
     this.setState({ stocks });
   }
@@ -28,6 +32,8 @@ class MarketSummary extends React.Component {
   render() {
     let { stocks } = this.state;
     return (
+      <> 
+      { stocks.length > 0 ? (
       <div className="page">
         <div className="settings clearfix">
           <div className="pull-left">Market Indices</div>
@@ -74,6 +80,10 @@ class MarketSummary extends React.Component {
           ))}
         </div>
       </div>
+      ) : (
+        <SemipolarLoading />
+      )}
+      </>
     );
   }
 }
