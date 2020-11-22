@@ -2,12 +2,14 @@ const axios = require("axios");
 const targetUrl = "https://app-money.tmx.com/graphql";
 const { log } = console;
 
+const symbols = ["^TSX", "^JX:CA", "^COMPX:US", "^NYA:US", "^SPX:US"];
+
 const WebTMX = {
-  buildRequest: (stocksList) => {
+  buildRequest: () => {
     const data = JSON.stringify({
       operationName: "getQuoteForSymbols",
       variables: {
-        symbols: stocksList,
+        symbols: symbols,
       },
       query:
         "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    longname\n    price\n    volume\n    openPrice\n    priceChange\n    percentChange\n    dayHigh\n    dayLow\n    prevClose\n    __typename\n  }\n}\n",
@@ -36,9 +38,9 @@ const WebTMX = {
     });
   },
 
-  getRealtimeData: async (stocksList) => {
+  getMarketSummary: async () => {
     try {
-      const response = await axios(targetUrl, WebTMX.buildRequest(stocksList));
+      const response = await axios(targetUrl, WebTMX.buildRequest());
       return WebTMX.parseResponse(response);
     } catch (err) {
       log(err);

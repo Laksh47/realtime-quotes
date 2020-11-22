@@ -1,10 +1,6 @@
 import React from "react";
 import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
-import WebTMX from "../../adapters/webtmx";
-
-// const { getRealtimeData } = require("../../adapters/webtmx");
-
-const indices = ["^TSX", "^JX:CA", "^COMPX:US", "^NYA:US", "^SPX:US"];
+import yahoo from "../../adapters/yahoo";
 
 class MarketSummary extends React.Component {
   constructor(props) {
@@ -13,12 +9,12 @@ class MarketSummary extends React.Component {
   }
 
   async reloadStockPrices() {
-    let stocks = await WebTMX.getRealtimeData(indices);
+    let stocks = await yahoo.getMarketSummary();
     this.setState({ stocks });
   }
 
   async componentDidMount() {
-    let stocks = await WebTMX.getRealtimeData(indices);
+    let stocks = await yahoo.getMarketSummary();
     this.setState({ stocks });
   }
 
