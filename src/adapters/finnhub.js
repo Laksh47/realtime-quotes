@@ -20,21 +20,10 @@ const finnHub = {
     return finnHubResponse["data"];
   },
 
-  getUSTickers: async () => {
-    const USTickersUrl = `${targetUrl}?exchange=US`;
+  getTickers: async (exchange) => {
+    const USTickersUrl = `${targetUrl}?exchange=${exchange}`;
     try {
       const response = await axios(USTickersUrl, finnHub.buildRequest());
-      return finnHub.parseResponse(response);
-    } catch (err) {
-      log(err);
-      return [];
-    }
-  },
-
-  getCanadaTickers: async () => {
-    const canadaTickersUrl = `${targetUrl}?exchange=TO`;
-    try {
-      const response = await axios(canadaTickersUrl, finnHub.buildRequest());
       return finnHub.parseResponse(response);
     } catch (err) {
       log(err);

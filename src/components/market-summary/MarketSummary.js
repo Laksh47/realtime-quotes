@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
 import yahoo from "../../adapters/yahoo";
+import WebTMX from "../../adapters/webtmx";
 
 class MarketSummary extends React.Component {
   constructor(props) {
@@ -14,7 +15,13 @@ class MarketSummary extends React.Component {
   }
 
   async componentDidMount() {
-    let stocks = await yahoo.getMarketSummary();
+
+    const asyncFunctions = [
+      yahoo.getMarketSummary(),
+      WebTMX.getMarketSummary()
+    ];
+
+    let stocks = await Promise.race(asyncFunctions);
     this.setState({ stocks });
   }
 
