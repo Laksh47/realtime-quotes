@@ -12,7 +12,7 @@ const WebTMX = {
         symbols: symbols,
       },
       query:
-        "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    currency\n    longname\n    price\n    volume\n    priceChange\n    percentChange\n  }\n}\n",
+        "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    currency\n    longname\n    price\n    volume\n    priceChange\n    percentChange\n  exchange\n}\n}\n",
     });
 
     return {
@@ -35,6 +35,7 @@ const WebTMX = {
         priceChange: stock.priceChange,
         percentChange: stock.percentChange,
         currency: stock.currency,
+        exchange: stock.exchange,
       };
     });
   },

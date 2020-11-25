@@ -33,9 +33,8 @@ class MarketSummary extends React.Component {
     return (
       <div className="page">
         <div className="settings clearfix">
-          <div className="pull-left">Market Indices</div>
           <div
-            className="reload-btn pull-right"
+            className="reload-btn"
             onClick={this.reloadStockPrices.bind(this)}
           >
             <IconRefresh />

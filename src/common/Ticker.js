@@ -6,7 +6,7 @@ class Ticker extends React.Component {
     return (
       <div className="index">
         <div className="first-row clearfix">
-          <span className="pull-left truncate">
+          <span className="pull-left truncate name">
             <span>{stock.companyName}</span>
           </span>
           <span className="current-price pull-right">
@@ -23,7 +23,7 @@ class Ticker extends React.Component {
                 encodeURIComponent(stock.companyName + " share price")
               }
             >
-              {stock.ticker}
+              {stock.exchange}: {stock.ticker}
             </a>
           </span>
           {stock.priceChange >= 0 ? (

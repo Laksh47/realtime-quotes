@@ -28,6 +28,7 @@ const yahooAPI = {
         priceChange: stock.regularMarketChange,
         percentChange: stock.regularMarketChangePercent,
         currency: stock.currency,
+        exchange: stock.exchange,
       };
     });
   },
