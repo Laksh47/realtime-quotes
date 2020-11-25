@@ -41,7 +41,7 @@ a {
 }
 
 .truncate {
-  width: 150px;
+  width: 40%;
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -80,7 +80,7 @@ a {
   padding: 20px;
 }
 
-/* market component css */
+/* ticker component css */
 .index:first-child {
   border-top: 1px solid $light-color;
 }
@@ -88,6 +88,10 @@ a {
 .index {
   padding: 10px;
   border-bottom: 1px solid $light-color;
+
+  &:hover {
+    background-color: #3a3e3e;
+  }
 }
 
 .index span {

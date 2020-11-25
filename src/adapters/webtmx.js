@@ -12,7 +12,7 @@ const WebTMX = {
         symbols: symbols,
       },
       query:
-        "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    longname\n    price\n    volume\n    openPrice\n    priceChange\n    percentChange\n    dayHigh\n    dayLow\n    prevClose\n    __typename\n  }\n}\n",
+        "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    currency\n    longname\n    price\n    volume\n    priceChange\n    percentChange\n  }\n}\n",
     });
 
     return {
@@ -34,6 +34,7 @@ const WebTMX = {
         price: stock.price,
         priceChange: stock.priceChange,
         percentChange: stock.percentChange,
+        currency: stock.currency,
       };
     });
   },
@@ -44,7 +45,7 @@ const WebTMX = {
       return WebTMX.parseResponse(response);
     } catch (err) {
       log(err);
-      return [];
+      return Promise.reject([]);
     }
   },
 };

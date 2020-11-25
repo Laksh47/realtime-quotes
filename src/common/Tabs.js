@@ -12,10 +12,7 @@ class Tabs extends React.Component {
 
   handleTabClick(tabIndex) {
     this.setState({
-      activeTabIndex:
-        tabIndex === this.state.activeTabIndex
-          ? this.props.defaultActiveTabIndex
-          : tabIndex,
+      activeTabIndex: tabIndex,
     });
   }
 
@@ -58,7 +55,7 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
-  defaultActiveTabIndex: 0,
+  defaultActiveTabIndex: null,
 };
 
 export default Tabs;

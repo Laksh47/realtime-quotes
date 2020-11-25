@@ -1,4 +1,5 @@
 import React from "react";
+import Ticker from "../../common/Ticker";
 import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
 import { SemipolarLoading } from "react-loadingg";
 import yahoo from "../../adapters/yahoo";
@@ -16,7 +17,7 @@ class MarketSummary extends React.Component {
 
   async reloadStockPrices() {
     this.setState({ isLoading: true });
-    const stocks = await Promise.race(asyncFunctions());
+    const stocks = await Promise.any(asyncFunctions());
     this.setState({
       isLoading: false,
       stocks,
@@ -45,39 +46,7 @@ class MarketSummary extends React.Component {
         ) : (
           <div className="indices">
             {stocks.map((stock, index) => (
-              <div className="index" key={index}>
-                <div className="first-row clearfix">
-                  <span className="pull-left truncate">
-                    <span>{stock.companyName}</span>
-                  </span>
-                  <span className="current-price pull-right">
-                    {stock.price}
-                  </span>
-                </div>
-                <div className="second-row clearfix">
-                  <span className="ticker pull-left">
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      href={
-                        "https://www.google.com/search?q=" +
-                        encodeURIComponent(stock.companyName + " share price")
-                      }
-                    >
-                      {stock.ticker}
-                    </a>
-                  </span>
-                  {stock.priceChange >= 0 ? (
-                    <span className="change bull pull-right">
-                      +{stock.priceChange} (+{stock.percentChange}%)
-                    </span>
-                  ) : (
-                    <span className="change bear pull-right">
-                      {stock.priceChange} ({stock.percentChange}%)
-                    </span>
-                  )}
-                </div>
-              </div>
+              <Ticker stock={stock} key={index} />
             ))}
           </div>
         )}

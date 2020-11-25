@@ -27,6 +27,7 @@ const yahooAPI = {
         price: stock.regularMarketPrice,
         priceChange: stock.regularMarketChange,
         percentChange: stock.regularMarketChangePercent,
+        currency: stock.currency,
       };
     });
   },
@@ -37,7 +38,7 @@ const yahooAPI = {
       return yahooAPI.parseResponse(response);
     } catch (err) {
       log(err);
-      return [];
+      return Promise.reject([]);
     }
   },
 };
