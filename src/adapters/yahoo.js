@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const symbols = ["^GSPTSE", "^SPCDNX", "^IXIC", "^NYA", "^GSPC"];
+const symbols = ["^GSPC", "^NYA", "^IXIC", "^SPCDNX", "^GSPTSE"];
 const targetUrl =
   "https://query2.finance.yahoo.com/v7/finance/quote?symbols=" +
   encodeURIComponent(symbols);

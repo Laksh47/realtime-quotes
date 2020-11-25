@@ -2,7 +2,7 @@ const axios = require("axios");
 const targetUrl = "https://app-money.tmx.com/graphql";
 const { log } = console;
 
-const symbols = ["^TSX", "^JX:CA", "^COMPX:US", "^NYA:US", "^SPX:US"];
+const symbols = ["^SPX:US", "^NYA:US", "^COMPX:US", "^JX:CA", "^TSX"];
 
 const WebTMX = {
   buildRequest: () => {
