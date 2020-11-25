@@ -28,11 +28,11 @@ class Ticker extends React.Component {
           </span>
           {stock.priceChange >= 0 ? (
             <span className="change bull pull-right">
-              +{stock.priceChange} (+{stock.percentChange}%)
+              +{stock.priceChange} (+{stock.percentChange} %)
             </span>
           ) : (
             <span className="change bear pull-right">
-              {stock.priceChange} ({stock.percentChange}%)
+              {stock.priceChange} ({stock.percentChange} %)
             </span>
           )}
         </div>

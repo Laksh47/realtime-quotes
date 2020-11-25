@@ -24,9 +24,9 @@ const yahooAPI = {
       return {
         ticker: stock.symbol,
         companyName: stock.shortName,
-        price: stock.regularMarketPrice,
-        priceChange: stock.regularMarketChange,
-        percentChange: stock.regularMarketChangePercent,
+        price: stock.regularMarketPrice.toFixed(2),
+        priceChange: stock.regularMarketChange.toFixed(2),
+        percentChange: stock.regularMarketChangePercent.toFixed(2),
         currency: stock.currency,
         exchange: stock.exchange,
       };

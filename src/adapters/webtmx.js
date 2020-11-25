@@ -31,9 +31,9 @@ const WebTMX = {
       return {
         ticker: stock.symbol,
         companyName: stock.longname,
-        price: stock.price,
-        priceChange: stock.priceChange,
-        percentChange: stock.percentChange,
+        price: stock.price.toFixed(2),
+        priceChange: stock.priceChange.toFixed(2),
+        percentChange: stock.percentChange.toFixed(2),
         currency: stock.currency,
         exchange: stock.exchange,
       };
