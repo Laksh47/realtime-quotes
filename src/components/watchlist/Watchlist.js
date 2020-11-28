@@ -3,10 +3,8 @@ import finnHub from "../../adapters/finnhub";
 
 class Watchlist extends React.Component {
   async componentDidMount() {
-    const USTickers = await finnHub.getTickers("US");
-    console.log(USTickers);
-    const canadaTickers = await finnHub.getTickers("TO");
-    console.log(canadaTickers);
+    const tickers = await finnHub.getTickers();
+    console.log(tickers);
     // store and index the above lists for searching adding to watchlist
   }
 

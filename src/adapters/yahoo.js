@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const symbols = ["^GSPC", "^NYA", "^IXIC", "^SPCDNX", "^GSPTSE"];
 const targetUrl =
-  "https://query2.finance.yahoo.com/v7/finance/quote?symbols=" +
+  "https://cors-anywhere.herokuapp.com/https://query2.finance.yahoo.com/v7/finance/quote?symbols=" +
   encodeURIComponent(symbols);
 
 const { log } = console;

@@ -1,6 +1,7 @@
 const axios = require("axios");
 
-const targetUrl = "https://finnhub.io/api/v1/stock/symbol";
+const targetUrl =
+  "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Laksh47/curate-tickers/master/tickers.json";
 
 const { log } = console;
 
@@ -11,7 +12,6 @@ const finnHub = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "X-Finnhub-Token": "but0dnv48v6ue3ptd090",
       },
     };
   },
@@ -20,10 +20,9 @@ const finnHub = {
     return finnHubResponse["data"];
   },
 
-  getTickers: async (exchange) => {
-    const USTickersUrl = `${targetUrl}?exchange=${exchange}`;
+  getTickers: async () => {
     try {
-      const response = await axios(USTickersUrl, finnHub.buildRequest());
+      const response = await axios(targetUrl, finnHub.buildRequest());
       return finnHub.parseResponse(response);
     } catch (err) {
       log(err);
