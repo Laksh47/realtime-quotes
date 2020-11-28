@@ -1,15 +1,17 @@
 /* color vars */
-$light-color: #e7e2e2;
-$dark-color: #161616;
+$light-color: white;
+$dark-color: black;
 
 $tab-border-color: #93c39d;
 $tab-bg-color: #ecf0f1;
 $tab-active-bg-color: #212021;
 
-$bull-color: #6ce41d;
+$ticker-border-color: #545050;
+
+$bull-color: #61ca1d;
 $bear-color: #f10c0c;
 
-$link-color: #ea9d9d;
+$link-color: #7d7876;
 
 $box-shadow-color: #f7f4f4;
 
@@ -20,6 +22,8 @@ body {
   min-height: 500px;
   background-color: $dark-color;
   color: $light-color;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
 a {
@@ -41,7 +45,7 @@ a {
 }
 
 .truncate {
-  width: 150px;
+  width: 50%;
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -52,45 +56,70 @@ a {
   overflow: visible;
 }
 
-.truncate:hover span {
-  position: relative;
-  box-shadow: 0 0 4px 0 $box-shadow-color;
+/* settings bar css */
+.settings {
   padding: 5px;
-  border-radius: 1px;
 }
 
 .reload-btn {
   cursor: pointer;
+  text-align: center;
 
   svg {
     fill: $light-color;
   }
 }
 
+/* ticker component css */
+.bull,
+.bear {
+  color: $light-color;
+  border-radius: 5px;
+  font-weight: 500;
+  padding: 5px;
+}
+
 .bull {
-  color: $bull-color;
+  background-color: $bull-color;
 }
 
 .bear {
-  color: $bear-color;
-}
-
-/* settings bar css */
-.settings {
-  padding: 20px;
-}
-
-/* market component css */
-.index:first-child {
-  border-top: 1px solid $light-color;
+  background-color: $bear-color;
 }
 
 .index {
-  padding: 10px;
-  border-bottom: 1px solid $light-color;
+  padding: 15px;
+  margin: 10px;
+  border: 1px solid $ticker-border-color;
+  border-radius: 10px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:hover {
+    background-color: #3a3e3e;
+  }
 }
 
-.index span {
+.first-row {
+  margin-bottom: 5px;
+}
+
+.current-price,
+.name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ticker {
+  font-size: 15px;
+}
+
+.name,
+.ticker,
+.change,
+.current-price {
   padding: 5px;
 }
 
@@ -107,7 +136,6 @@ a {
 
   &:after {
     content: "";
-    border-top: 2px solid;
     display: block;
     border-top: 2px solid $tab-border-color;
   }
@@ -128,4 +156,5 @@ a {
   display: block;
   text-align: center;
   cursor: pointer;
+  font-size: 18px;
 }

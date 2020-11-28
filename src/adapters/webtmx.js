@@ -2,7 +2,7 @@ const axios = require("axios");
 const targetUrl = "https://app-money.tmx.com/graphql";
 const { log } = console;
 
-const symbols = ["^TSX", "^JX:CA", "^COMPX:US", "^NYA:US", "^SPX:US"];
+const symbols = ["^SPX:US", "^NYA:US", "^COMPX:US", "^JX:CA", "^TSX"];
 
 const WebTMX = {
   buildRequest: () => {
@@ -12,7 +12,7 @@ const WebTMX = {
         symbols: symbols,
       },
       query:
-        "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    longname\n    price\n    volume\n    openPrice\n    priceChange\n    percentChange\n    dayHigh\n    dayLow\n    prevClose\n    __typename\n  }\n}\n",
+        "query getQuoteForSymbols($symbols: [String]) {\n  getQuoteForSymbols(symbols: $symbols) {\n    symbol\n    currency\n    longname\n    price\n    volume\n    priceChange\n    percentChange\n  exchange\n}\n}\n",
     });
 
     return {
@@ -31,9 +31,11 @@ const WebTMX = {
       return {
         ticker: stock.symbol,
         companyName: stock.longname,
-        price: stock.price,
-        priceChange: stock.priceChange,
-        percentChange: stock.percentChange,
+        price: stock.price.toFixed(2),
+        priceChange: stock.priceChange.toFixed(2),
+        percentChange: stock.percentChange.toFixed(2),
+        currency: stock.currency,
+        exchange: stock.exchange,
       };
     });
   },
@@ -44,7 +46,7 @@ const WebTMX = {
       return WebTMX.parseResponse(response);
     } catch (err) {
       log(err);
-      return [];
+      return Promise.reject([]);
     }
   },
 };
