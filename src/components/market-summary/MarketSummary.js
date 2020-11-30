@@ -3,11 +3,6 @@ import Ticker from "../../common/Ticker";
 import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
 import { SemipolarLoading } from "react-loadingg";
 import yahoo from "../../adapters/yahoo";
-import WebTMX from "../../adapters/webtmx";
-
-const asyncFunctions = () => {
-  return [yahoo.getMarketSummary(), WebTMX.getMarketSummary()];
-};
 
 class MarketSummary extends React.Component {
   constructor(props) {
@@ -17,7 +12,7 @@ class MarketSummary extends React.Component {
 
   async reloadStockPrices() {
     this.setState({ isLoading: true });
-    const stocks = await Promise.any(asyncFunctions());
+    const stocks = await yahoo.getMarketSummary();
     this.setState({
       isLoading: false,
       stocks,
