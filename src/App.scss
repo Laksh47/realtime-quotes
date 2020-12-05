@@ -160,6 +160,17 @@ a {
 }
 
 // Watchlist css
-.search-result {
-  cursor: pointer;
+
+.search {
+  padding: 10px;
+
+  input.search-bar {
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .search-result {
+    cursor: pointer;
+  }
 }

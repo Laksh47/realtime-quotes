@@ -1,6 +1,7 @@
 import React from "react";
 import yahooAPI from "../../adapters/yahoo";
 import Ticker from "../../common/Ticker";
+import { SemipolarLoading } from "react-loadingg";
 
 const serialize = (obj) => {
   if (obj) return JSON.stringify(obj);
@@ -25,6 +26,7 @@ class Watchlist extends React.Component {
       stocks: [],
     };
 
+    this.textInput = React.createRef();
     this.search = this.search.bind(this);
     this.addAndReload = this.addAndReload.bind(this);
     this.reloadStocks = this.reloadStocks.bind(this);
@@ -45,18 +47,28 @@ class Watchlist extends React.Component {
     let symbols = [],
       stocks = [];
 
+    this.setState({ isLoading: true });
+
     symbols = deserialize(window.localStorage.getItem("watchlist"));
     if (symbols && symbols.length) {
       stocks = await yahooAPI.getSummary(symbols);
-      this.setState({ symbols, stocks });
+      this.setState({ symbols, stocks, isLoading: false });
     }
+
+    this.setState({ isLoading: false });
+  }
+
+  clearTextInput() {
+    this.textInput.current.value = "";
   }
 
   async reloadStocks() {
     const { symbols } = this.state;
+    this.setState({ isLoading: true });
     const stocks = await yahooAPI.getSummary(symbols);
-    this.setState({ stocks });
+    this.setState({ stocks, isLoading: false });
     this.updateStorage();
+    this.clearTextInput();
   }
 
   async search(event) {
@@ -86,7 +98,7 @@ class Watchlist extends React.Component {
   }
 
   render() {
-    let { stocks, searchResults } = this.state;
+    let { stocks, searchResults, isLoading } = this.state;
     return (
       <div className="watchlist">
         <div className="settings clearfix"></div>
@@ -96,24 +108,36 @@ class Watchlist extends React.Component {
               className="search-bar"
               placeholder="search for stocks"
               onChange={(evt) => this.search(evt)}
+              list="search-results"
+              ref={this.textInput}
             ></input>
-            <div className="search-results">
-              {searchResults.map((result, index) => (
-                <div
-                  className="search-result"
-                  onClick={() => this.addAndReload(result)}
-                  key={index}
-                >
-                  {result}
-                </div>
-              ))}
-            </div>
+            {searchResults.length > 0 && (
+              <div id="search-results">
+                {searchResults.map((result, index) => {
+                  return (
+                    <div
+                      className="search-result"
+                      onClick={() => this.addAndReload(result)}
+                      key={result}
+                      value={result}
+                    >
+                      {result}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {isLoading ? (
+            <SemipolarLoading />
+          ) : (
             <div className="indices">
               {stocks.map((stock, index) => (
                 <Ticker stock={stock} key={index} />
               ))}
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
