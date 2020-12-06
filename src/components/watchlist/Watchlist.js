@@ -2,6 +2,7 @@ import React from "react";
 import yahooAPI from "../../adapters/yahoo";
 import Ticker from "../../common/Ticker";
 import { SemipolarLoading } from "react-loadingg";
+import * as constants from "../../constants";
 
 const serialize = (obj) => {
   if (obj) return JSON.stringify(obj);
@@ -12,8 +13,6 @@ const deserialize = (obj) => {
   if (obj && obj !== "") return JSON.parse(obj);
   return null;
 };
-
-const storageKey = "watchlist";
 
 class Watchlist extends React.Component {
   constructor(props) {
@@ -38,7 +37,7 @@ class Watchlist extends React.Component {
 
   updateStorage(symbols) {
     console.log("Updating local storage: " + symbols);
-    window.localStorage.setItem(storageKey, serialize(symbols));
+    window.localStorage.setItem(constants.STORAGE_KEY, serialize(symbols));
   }
 
   async componentDidMount() {
@@ -47,7 +46,7 @@ class Watchlist extends React.Component {
 
     this.setState({ isLoading: true });
 
-    symbols = deserialize(window.localStorage.getItem("watchlist"));
+    symbols = deserialize(window.localStorage.getItem(constants.STORAGE_KEY));
     if (symbols && symbols.length) {
       stocks = await yahooAPI.getSummary(symbols);
       this.setState({ symbols, stocks, isLoading: false });
@@ -65,11 +64,11 @@ class Watchlist extends React.Component {
     }
 
     const queryResults = await yahooAPI.searchStocks(query);
-    const symbols = queryResults.map((result) => {
-      return result["symbol"];
-    });
-    console.log(symbols);
-    this.setState({ searchResults: symbols });
+    // const symbols = queryResults.map((result) => {
+    //   return result["symbol"];
+    // });
+    // console.log(symbols);
+    this.setState({ searchResults: queryResults });
   }
 
   async reloadStocks() {
@@ -119,16 +118,20 @@ class Watchlist extends React.Component {
               ref={this.textInput}
             ></input>
             {searchResults.length > 0 && (
-              <div id="search-results">
+              <div id="search-results" className="search-results">
                 {searchResults.map((result, index) => {
                   return (
                     <div
                       className="search-result"
-                      onClick={() => this.addAndReload(result)}
-                      key={result}
-                      value={result}
+                      onClick={() => this.addAndReload(result.symbol)}
+                      key={result.symbol}
+                      value={result.symbol}
                     >
-                      {result}
+                      <div className="symbol">{result.symbol}</div>
+                      <div className="longname">{result.longname}</div>
+                      <div className="exchange">
+                        {result.typeDisp} - {result.exchange}
+                      </div>
                     </div>
                   );
                 })}

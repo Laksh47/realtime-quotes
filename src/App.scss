@@ -184,7 +184,32 @@ a {
     border-radius: 5px;
   }
 
-  .search-result {
-    cursor: pointer;
+  .search-results {
+    position: absolute;
+    background: white;
+    width: 95%;
+    color: black;
+    padding: 5px 15px;
+
+    .search-result {
+      cursor: pointer;
+      margin: 10px 0;
+
+      .symbol {
+        width: 20%;
+      }
+
+      .longname {
+        width: 50%;
+      }
+
+      .exchange {
+        width: 20%;
+      }
+    }
+
+    .search-result div {
+      display: inline-block;
+    }
   }
 }
