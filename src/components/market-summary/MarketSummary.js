@@ -1,6 +1,6 @@
 import React from "react";
 import Ticker from "../../common/Ticker";
-import { ReactComponent as IconRefresh } from "./icon_refresh.svg";
+import { ReactComponent as IconRefresh } from "../../assets/icon_refresh.svg";
 import { SemipolarLoading } from "react-loadingg";
 import yahoo from "../../adapters/yahoo";
 

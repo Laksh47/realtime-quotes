@@ -1,8 +1,9 @@
 import React from "react";
+import { ReactComponent as DeleteIcon } from "../assets/delete.svg";
 
 class Ticker extends React.Component {
   render() {
-    const { stock } = this.props;
+    const { stock, showDelete, onDelete } = this.props;
     return (
       <div className="index">
         <div className="first-row clearfix">
@@ -10,6 +11,12 @@ class Ticker extends React.Component {
             <span>{stock.companyName}</span>
           </span>
           <span className="current-price pull-right">
+            {showDelete && (
+              <DeleteIcon
+                onClick={() => onDelete(stock.ticker)}
+                className="delete-btn"
+              />
+            )}
             {stock.price} {stock.currency}
           </span>
         </div>

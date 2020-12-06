@@ -87,6 +87,15 @@ a {
   background-color: $bear-color;
 }
 
+.delete-btn {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  fill: white;
+  margin-right: 5px;
+  display: none;
+}
+
 .index {
   padding: 15px;
   margin: 10px;
@@ -99,6 +108,11 @@ a {
 
   &:hover {
     background-color: #3a3e3e;
+
+    .delete-btn {
+      display: inline-block;
+      vertical-align: bottom;
+    }
   }
 }
 

@@ -32,15 +32,13 @@ class Watchlist extends React.Component {
     this.reloadStocks = this.reloadStocks.bind(this);
   }
 
-  updateStorage() {
-    const { symbols } = this.state;
-    if (symbols && symbols.length) {
-      window.localStorage.setItem(storageKey, serialize(symbols));
-    }
+  clearTextInput() {
+    this.textInput.current.value = "";
   }
 
-  componentWillUnmount() {
-    this.updateStorage();
+  updateStorage(symbols) {
+    console.log("Updating local storage: " + symbols);
+    window.localStorage.setItem(storageKey, serialize(symbols));
   }
 
   async componentDidMount() {
@@ -58,19 +56,6 @@ class Watchlist extends React.Component {
     this.setState({ isLoading: false });
   }
 
-  clearTextInput() {
-    this.textInput.current.value = "";
-  }
-
-  async reloadStocks() {
-    const { symbols } = this.state;
-    this.setState({ isLoading: true });
-    const stocks = await yahooAPI.getSummary(symbols);
-    this.setState({ stocks, isLoading: false });
-    this.updateStorage();
-    this.clearTextInput();
-  }
-
   async search(event) {
     const query = event.target.value;
 
@@ -78,8 +63,6 @@ class Watchlist extends React.Component {
       this.setState({ searchResults: [] });
       return;
     }
-
-    console.log(query);
 
     const queryResults = await yahooAPI.searchStocks(query);
     const symbols = queryResults.map((result) => {
@@ -89,12 +72,36 @@ class Watchlist extends React.Component {
     this.setState({ searchResults: symbols });
   }
 
+  async reloadStocks() {
+    const { symbols } = this.state;
+    this.setState({ isLoading: true });
+    const stocks = await yahooAPI.getSummary(symbols);
+    this.setState({ stocks, isLoading: false });
+  }
+
   async addAndReload(symbol) {
-    console.log(symbol);
+    console.log("Adding: " + symbol);
     let { symbols } = this.state;
     symbols.push(symbol);
     this.setState({ searchResults: [], symbols });
+    this.updateStorage(symbols);
     this.reloadStocks();
+    this.clearTextInput();
+  }
+
+  deleteAndUpdate(symbol) {
+    console.log("Deleting: " + symbol);
+    let { symbols, stocks } = this.state;
+
+    symbols = symbols.filter(function (item) {
+      return item !== symbol;
+    });
+    stocks = stocks.filter(function (stock) {
+      return stock.ticker !== symbol;
+    });
+
+    this.setState({ symbols, stocks });
+    this.updateStorage(symbols);
   }
 
   render() {
@@ -134,7 +141,12 @@ class Watchlist extends React.Component {
           ) : (
             <div className="indices">
               {stocks.map((stock, index) => (
-                <Ticker stock={stock} key={index} />
+                <Ticker
+                  stock={stock}
+                  key={index}
+                  showDelete={true}
+                  onDelete={this.deleteAndUpdate.bind(this)}
+                />
               ))}
             </div>
           )}
