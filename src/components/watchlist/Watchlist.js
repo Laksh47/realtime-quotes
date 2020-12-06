@@ -64,10 +64,6 @@ class Watchlist extends React.Component {
     }
 
     const queryResults = await yahooAPI.searchStocks(query);
-    // const symbols = queryResults.map((result) => {
-    //   return result["symbol"];
-    // });
-    // console.log(symbols);
     this.setState({ searchResults: queryResults });
   }
 
@@ -128,9 +124,9 @@ class Watchlist extends React.Component {
                       value={result.symbol}
                     >
                       <div className="symbol">{result.symbol}</div>
-                      <div className="longname">{result.longname}</div>
-                      <div className="exchange">
-                        {result.typeDisp} - {result.exchange}
+                      <div className="longname">
+                        {result.longname} ({result.typeDisp} - {result.exchange}
+                        )
                       </div>
                     </div>
                   );
