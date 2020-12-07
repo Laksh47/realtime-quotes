@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Wealthsimple Realtime",
-  "description": "Realtime price for portfolio tickers",
+  "name": "Realtime Quotes",
+  "description": "Realtime price for portfolio tickers fetched from Yahoo Finance API",
   "version": "0.0.1",
 
   "browser_action": {
