@@ -1,6 +1,19 @@
 const axios = require("axios");
 
-const marketIndices = ["^GSPC", "^NYA", "^IXIC", "^SPCDNX", "^GSPTSE"];
+const marketIndices = [
+  "^GSPC",
+  "^GSPTSE",
+  "^IXIC",
+  "^DJI",
+  "^NYA",
+  "^SPCDNX",
+  "CADUSD=X",
+  "BTC-CAD",
+  "^VIX",
+  "CL=F",
+  "^TNX",
+  "GC=F",
+];
 const summaryUrl = "https://query2.finance.yahoo.com/v7/finance/quote";
 
 const quotesCount = 5;
