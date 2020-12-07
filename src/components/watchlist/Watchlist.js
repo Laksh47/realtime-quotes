@@ -138,15 +138,20 @@ class Watchlist extends React.Component {
           {isLoading ? (
             <SemipolarLoading />
           ) : (
-            <div className="indices">
-              {stocks.map((stock, index) => (
-                <Ticker
-                  stock={stock}
-                  key={index}
-                  showDelete={true}
-                  onDelete={this.deleteAndUpdate.bind(this)}
-                />
-              ))}
+            <div>
+              {stocks.length === 0 && (
+                <h4 align="center">Search and add tickers to track them!</h4>
+              )}
+              <div className="indices">
+                {stocks.map((stock, index) => (
+                  <Ticker
+                    stock={stock}
+                    key={index}
+                    showDelete={true}
+                    onDelete={this.deleteAndUpdate.bind(this)}
+                  />
+                ))}
+              </div>
             </div>
           )}
         </div>
