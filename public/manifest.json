@@ -10,9 +10,9 @@
     "default_title": "Open the popup"
   },
   "icons": {
-    "16": "logo192.png",
-    "48": "logo512.png",
-    "128": "logo512.png"
+    "16": "y16.png",
+    "48": "y48.png",
+    "128": "y128.png"
   },
   "content_security_policy": "script-src 'self' 'sha256-qfrhMW9eTbaLovJo7vyzLPA2PQa8LfNWL1QWi8ICtw8='; object-src 'self'",
   "permissions": ["*://*.tmx.com/*", "*://*.yahoo.com/*", "*://*.finnhub.io/*"]
