@@ -15,6 +15,8 @@ $link-color: #7d7876;
 
 $box-shadow-color: #f7f4f4;
 
+$time-color: #d6804d;
+
 /* common css */
 html,
 body {
@@ -58,12 +60,23 @@ a {
 
 /* settings bar css */
 .settings {
-  padding: 5px;
+  padding: 15px;
+}
+
+.time {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 92%;
+  color: $time-color;
+  font-weight: 600;
 }
 
 .reload-btn {
   cursor: pointer;
   text-align: center;
+  display: inline-block;
+  vertical-align: middle;
 
   svg {
     fill: $light-color;

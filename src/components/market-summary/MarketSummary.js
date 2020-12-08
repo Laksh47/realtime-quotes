@@ -4,6 +4,12 @@ import { ReactComponent as IconRefresh } from "../../assets/icon_refresh.svg";
 import { SemipolarLoading } from "react-loadingg";
 import yahoo from "../../adapters/yahoo";
 
+const getTimestamp = () => {
+  const dt = new Date();
+  const time = dt.toLocaleTimeString("en-us", { timeZoneName: "short" });
+  return `${dt.toDateString()}, ${time}`;
+};
+
 class MarketSummary extends React.Component {
   constructor(props) {
     super(props);
@@ -28,6 +34,7 @@ class MarketSummary extends React.Component {
     return (
       <div className="page">
         <div className="settings clearfix">
+          <div class="time">{getTimestamp()}</div>
           <div
             className="reload-btn"
             onClick={this.reloadStockPrices.bind(this)}
