@@ -241,11 +241,14 @@ a {
       margin: 10px 0;
 
       .symbol {
-        width: 20%;
+        width: 25%;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       .longname {
         width: 70%;
+        text-align: right;
       }
     }
 
