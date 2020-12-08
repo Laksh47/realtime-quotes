@@ -1,14 +1,11 @@
 import React from "react";
-import Ticker from "../../common/Ticker";
+
+import Ticker from "../../components/Ticker";
+import yahooAPI from "../../adapters/yahoo";
+import * as utils from "../../utils";
+
 import { ReactComponent as IconRefresh } from "../../assets/icon_refresh.svg";
 import { SemipolarLoading } from "react-loadingg";
-import yahoo from "../../adapters/yahoo";
-
-const getTimestamp = () => {
-  const dt = new Date();
-  const time = dt.toLocaleTimeString("en-us", { timeZoneName: "short" });
-  return `${dt.toDateString()}, ${time}`;
-};
 
 class MarketSummary extends React.Component {
   constructor(props) {
@@ -18,7 +15,7 @@ class MarketSummary extends React.Component {
 
   async reloadStockPrices() {
     this.setState({ isLoading: true });
-    const stocks = await yahoo.getMarketSummary();
+    const stocks = await yahooAPI.getMarketSummary();
     this.setState({
       isLoading: false,
       stocks,
@@ -34,7 +31,7 @@ class MarketSummary extends React.Component {
     return (
       <div className="page">
         <div className="settings clearfix">
-          <div class="time">{getTimestamp()}</div>
+          <div class="time">{utils.getTimestamp()}</div>
           <div
             className="reload-btn"
             onClick={this.reloadStockPrices.bind(this)}

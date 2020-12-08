@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.scss";
-import Tab from "./common/Tab";
-import Tabs from "./common/Tabs";
-import MarketSummary from "./components/market-summary/MarketSummary";
-import Watchlist from "./components/watchlist/Watchlist";
+import Tab from "./components/Tab";
+import Tabs from "./components/Tabs";
+import MarketSummary from "./pages/market-summary/MarketSummary";
+import Watchlist from "./pages/watchlist/Watchlist";
 
 class App extends React.Component {
   render() {

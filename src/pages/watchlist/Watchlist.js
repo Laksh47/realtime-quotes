@@ -1,18 +1,12 @@
 import React from "react";
+
+import Ticker from "../../components/Ticker";
 import yahooAPI from "../../adapters/yahoo";
-import Ticker from "../../common/Ticker";
-import { SemipolarLoading } from "react-loadingg";
 import * as constants from "../../constants";
+import * as utils from "../../utils";
 
-const serialize = (obj) => {
-  if (obj) return JSON.stringify(obj);
-  return null;
-};
-
-const deserialize = (obj) => {
-  if (obj && obj !== "") return JSON.parse(obj);
-  return null;
-};
+import { SemipolarLoading } from "react-loadingg";
+import { ReactComponent as IconRefresh } from "../../assets/icon_refresh.svg";
 
 class Watchlist extends React.Component {
   constructor(props) {
@@ -37,7 +31,10 @@ class Watchlist extends React.Component {
 
   updateStorage(symbols) {
     console.log("Updating local storage: " + symbols);
-    window.localStorage.setItem(constants.STORAGE_KEY, serialize(symbols));
+    window.localStorage.setItem(
+      constants.STORAGE_KEY,
+      utils.serialize(symbols)
+    );
   }
 
   async componentDidMount() {
@@ -46,7 +43,9 @@ class Watchlist extends React.Component {
 
     this.setState({ isLoading: true });
 
-    symbols = deserialize(window.localStorage.getItem(constants.STORAGE_KEY));
+    symbols = utils.deserialize(
+      window.localStorage.getItem(constants.STORAGE_KEY)
+    );
     if (symbols && symbols.length) {
       stocks = await yahooAPI.getSummary(symbols);
       this.setState({ symbols, stocks, isLoading: false });
@@ -103,7 +102,12 @@ class Watchlist extends React.Component {
     let { stocks, searchResults, isLoading } = this.state;
     return (
       <div className="watchlist">
-        <div className="settings clearfix"></div>
+        <div className="settings clearfix">
+          <div class="time">{utils.getTimestamp()}</div>
+          <div className="reload-btn" onClick={this.reloadStocks.bind(this)}>
+            <IconRefresh />
+          </div>
+        </div>
         <div className="watchlist-tickers">
           <div className="search">
             <input
