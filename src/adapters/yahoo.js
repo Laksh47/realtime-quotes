@@ -3,16 +3,16 @@ const axios = require("axios");
 const marketIndices = [
   "^GSPC",
   "^GSPTSE",
+  "^NSEI",
   "^IXIC",
   "^DJI",
-  "^NYA",
-  "^SPCDNX",
+  "CADINR=X",
   "CADUSD=X",
   "BTC-CAD",
-  "^VIX",
+  "GC=F",
   "CL=F",
   "^TNX",
-  "GC=F",
+  "^VIX",
 ];
 const summaryUrl = "https://query2.finance.yahoo.com/v7/finance/quote";
 
