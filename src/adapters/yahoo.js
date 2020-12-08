@@ -43,6 +43,7 @@ const yahooAPI = {
         percentChange: stock.regularMarketChangePercent.toFixed(2),
         currency: stock.currency,
         exchange: stock.exchange,
+        marketState: stock.marketState,
       };
     });
   },

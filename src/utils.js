@@ -1,3 +1,5 @@
+import { YAHOO_MARKET_OPEN } from "./constants";
+
 const getTimestamp = () => {
   const dt = new Date();
   const time = dt.toLocaleTimeString("en-us", { timeZoneName: "short" });
@@ -14,4 +16,8 @@ const deserialize = (obj) => {
   return null;
 };
 
-export { getTimestamp, serialize, deserialize };
+const isMarketOpen = (status) => {
+  return status === YAHOO_MARKET_OPEN;
+};
+
+export { getTimestamp, serialize, deserialize, isMarketOpen };

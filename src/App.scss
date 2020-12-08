@@ -18,6 +18,9 @@ $box-shadow-color: #f7f4f4;
 
 $time-color: #d6804d;
 
+$orange: orange;
+$purple: #8a3a8a;
+
 /* common css */
 
 html,
@@ -88,6 +91,14 @@ a {
 
 /* ticker component css */
 
+.icon-sun {
+  fill: $orange;
+}
+
+.icon-moon {
+  fill: $purple;
+}
+
 .bull,
 .bear {
   color: $light-color;
@@ -135,6 +146,18 @@ a {
 
 .first-row {
   margin-bottom: 5px;
+
+  .icon-sun,
+  .icon-moon {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    vertical-align: text-bottom;
+  }
+
+  .name span {
+    vertical-align: middle;
+  }
 }
 
 .current-price,
