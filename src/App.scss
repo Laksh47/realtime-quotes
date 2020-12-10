@@ -25,8 +25,8 @@ $purple: #8a3a8a;
 
 html,
 body {
-  min-width: 500px;
-  min-height: 500px;
+  width: 500px;
+  max-height: 500px;
   background-color: $dark-color;
   color: $light-color;
   font-size: 14px;
@@ -214,8 +214,12 @@ a {
 }
 
 // market summary css
+
 .indices {
   margin-top: 15px;
+  height: 405px;
+  overflow: scroll;
+  padding-bottom: 15px;
 }
 
 // watchlist css
