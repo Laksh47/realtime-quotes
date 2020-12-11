@@ -1,0 +1,23 @@
+{
+  "data": {
+    "quoteResponse": {
+      "result": [
+        {
+          "region": "US",
+          "quoteType": "INDEX",
+          "currency": "USD",
+          "marketState": "REGULAR",
+          "exchange": "SNP",
+          "shortName": "S&P 500",
+          "market": "us_market",
+          "regularMarketChange": -12.410156,
+          "regularMarketChangePercent": -0.33832654,
+          "regularMarketPrice": 3655.69,
+          "fullExchangeName": "SNP",
+          "symbol": "^GSPC"
+        }
+      ],
+      "error": null
+    }
+  }
+}

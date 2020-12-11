@@ -108,7 +108,7 @@ class Watchlist extends React.Component {
     return (
       <div className="watchlist">
         <div className="settings clearfix">
-          <div class="time">{utils.getTimestamp()}</div>
+          <div className="time">{utils.getTimestamp()}</div>
           <div className="reload-btn" onClick={this.reloadStocks.bind(this)}>
             <IconRefresh />
           </div>

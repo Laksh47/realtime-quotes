@@ -46,7 +46,7 @@ const WebTMX = {
       return WebTMX.parseResponse(response);
     } catch (err) {
       log(err);
-      return Promise.reject([]);
+      return Promise.resolve([]);
     }
   },
 };
