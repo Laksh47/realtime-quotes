@@ -1,10 +1,10 @@
 import React from "react";
 
-import Ticker from "../../components/Ticker";
-import yahooAPI from "../../adapters/yahoo";
-import * as utils from "../../utils";
+import Ticker from "../components/Ticker";
+import yahooAPI from "../adapters/yahoo";
+import * as utils from "../common/utils";
 
-import { ReactComponent as IconRefresh } from "../../assets/icon_refresh.svg";
+import { ReactComponent as IconRefresh } from "../assets/icon_refresh.svg";
 import { SemipolarLoading } from "react-loadingg";
 
 class MarketSummary extends React.Component {

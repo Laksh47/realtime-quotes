@@ -3,7 +3,7 @@ import { ReactComponent as DeleteIcon } from "../assets/delete.svg";
 import { ReactComponent as SunIcon } from "../assets/sun.svg";
 import { ReactComponent as MoonIcon } from "../assets/moon.svg";
 
-import { isMarketOpen } from "../utils";
+import { isMarketOpen } from "../common/utils";
 
 class Ticker extends React.Component {
   render() {

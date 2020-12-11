@@ -1,12 +1,12 @@
 import React from "react";
 
-import Ticker from "../../components/Ticker";
-import yahooAPI from "../../adapters/yahoo";
-import * as constants from "../../constants";
-import * as utils from "../../utils";
+import Ticker from "../components/Ticker";
+import yahooAPI from "../adapters/yahoo";
+import * as constants from "../common/constants";
+import * as utils from "../common/utils";
 
 import { SemipolarLoading } from "react-loadingg";
-import { ReactComponent as IconRefresh } from "../../assets/icon_refresh.svg";
+import { ReactComponent as IconRefresh } from "../assets/icon_refresh.svg";
 
 class Watchlist extends React.Component {
   constructor(props) {
