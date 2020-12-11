@@ -10,6 +10,8 @@ import yahooSearchResponse from "../fixtures/yahooSearchResponse.json";
 const getItemMock = jest.fn(),
   setItemMock = jest.fn();
 
+console.log = jest.fn(); // mock console logs
+
 function clearLocalMocks() {
   delete global.localStorage;
   global.localStorage = {};

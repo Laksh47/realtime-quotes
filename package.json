@@ -18,7 +18,20 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test '--coverage' '--watchAll=false'",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/serviceWorker.js",
+      "!**/index.js",
+      "!**/src/adapters/finnhub.js",
+      "!**/src/adapters/webtmx.js",
+      "!**/src/reportWebVitals.js"
+    ]
   },
   "eslintConfig": {
     "extends": [
