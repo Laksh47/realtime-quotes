@@ -39,15 +39,14 @@ class MarketSummary extends React.Component {
             <IconRefresh />
           </div>
         </div>
-        {isLoading ? (
-          <SemipolarLoading />
-        ) : (
-          <div className="indices">
-            {stocks.map((stock, index) => (
-              <Ticker stock={stock} key={index} />
-            ))}
-          </div>
-        )}
+
+        <div className="indices">
+          {isLoading ? (
+            <SemipolarLoading />
+          ) : (
+            stocks.map((stock, index) => <Ticker stock={stock} key={index} />)
+          )}
+        </div>
       </div>
     );
   }

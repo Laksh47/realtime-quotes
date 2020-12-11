@@ -76,7 +76,12 @@ class Watchlist extends React.Component {
   async addAndReload(symbol) {
     console.log("Adding: " + symbol);
     let { symbols } = this.state;
-    symbols.push(symbol);
+
+    // check for duplicates
+    if (symbols.indexOf(symbol) === -1) {
+      symbols.unshift(symbol);
+    }
+
     this.setState({ searchResults: [], symbols });
     this.updateStorage(symbols);
     this.reloadStocks();
@@ -139,25 +144,25 @@ class Watchlist extends React.Component {
             )}
           </div>
 
-          {isLoading ? (
-            <SemipolarLoading />
-          ) : (
-            <div>
-              {stocks.length === 0 && (
-                <h4 align="center">Search and add tickers to track them!</h4>
-              )}
-              <div className="indices">
-                {stocks.map((stock, index) => (
+          <div>
+            {stocks.length === 0 && (
+              <h4 align="center">Search and add tickers to track them!</h4>
+            )}
+            <div className="indices">
+              {isLoading ? (
+                <SemipolarLoading />
+              ) : (
+                stocks.map((stock, index) => (
                   <Ticker
                     stock={stock}
                     key={index}
                     showDelete={true}
                     onDelete={this.deleteAndUpdate.bind(this)}
                   />
-                ))}
-              </div>
+                ))
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     );
