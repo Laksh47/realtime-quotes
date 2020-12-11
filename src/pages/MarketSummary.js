@@ -36,7 +36,7 @@ class MarketSummary extends React.Component {
             className="reload-btn"
             onClick={this.reloadStockPrices.bind(this)}
           >
-            <IconRefresh data-testid="refresh-icon" />
+            <IconRefresh />
           </div>
         </div>
 
