@@ -27,7 +27,7 @@ const finnHub = {
       return finnHub.parseResponse(response);
     } catch (err) {
       log(err);
-      return Promise.reject([]);
+      return Promise.resolve([]);
     }
   },
 };

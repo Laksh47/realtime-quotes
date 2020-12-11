@@ -1,0 +1,32 @@
+name: Run tests
+
+on: [pull_request]
+
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Installing modules
+        run: npm install
+
+      - name: running tests
+        run: npm run test
+
+      - name: running coverage
+        run: npm run test:coverage

@@ -55,7 +55,7 @@ const yahooAPI = {
       return yahooAPI.parseSummaryResponse(response);
     } catch (err) {
       log(err);
-      return Promise.reject([]);
+      return Promise.resolve([]);
     }
   },
 
@@ -74,7 +74,7 @@ const yahooAPI = {
       return yahooAPI.parseQueryResponse(response);
     } catch (err) {
       log(err);
-      return Promise.reject([]);
+      return Promise.resolve([]);
     }
   },
 };

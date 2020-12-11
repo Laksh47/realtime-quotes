@@ -1,0 +1,28 @@
+{
+  "data": {
+    "quotes": [
+      {
+        "exchange": "NMS",
+        "shortname": "Tesla, Inc.",
+        "quoteType": "EQUITY",
+        "symbol": "TSLA",
+        "index": "quotes",
+        "score": 3646922.0,
+        "typeDisp": "Equity",
+        "longname": "Tesla, Inc.",
+        "isYahooFinance": true
+      },
+      {
+        "exchange": "NYQ",
+        "shortname": "Tenaris S.A.",
+        "quoteType": "EQUITY",
+        "symbol": "TS",
+        "index": "quotes",
+        "score": 2250600.0,
+        "typeDisp": "Equity",
+        "longname": "Tenaris S.A.",
+        "isYahooFinance": true
+      }
+    ]
+  }
+}

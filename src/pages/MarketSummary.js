@@ -31,7 +31,7 @@ class MarketSummary extends React.Component {
     return (
       <div className="page">
         <div className="settings clearfix">
-          <div class="time">{utils.getTimestamp()}</div>
+          <div className="time">{utils.getTimestamp()}</div>
           <div
             className="reload-btn"
             onClick={this.reloadStockPrices.bind(this)}

@@ -13,9 +13,9 @@ class Ticker extends React.Component {
         <div className="first-row clearfix">
           <span className="pull-left truncate name">
             {isMarketOpen(stock.marketState) ? (
-              <SunIcon class="icon-sun"></SunIcon>
+              <SunIcon className="icon-sun"></SunIcon>
             ) : (
-              <MoonIcon class="icon-moon"></MoonIcon>
+              <MoonIcon className="icon-moon"></MoonIcon>
             )}
             <span>{stock.companyName}</span>
           </span>
