@@ -3,7 +3,7 @@ name: Run tests
 on: [pull_request]
 
 jobs:
-  tester:
+  tests-runner:
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,11 +28,5 @@ jobs:
       - name: running tests
         run: npm run test
 
-  coverage:
-    needs: tester
-
-    name: Coverage run
-
-    steps:
       - name: running coverage
         run: npm run test:coverage
