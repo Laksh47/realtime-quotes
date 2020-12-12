@@ -10,10 +10,10 @@
     "default_title": "Open the popup"
   },
   "icons": {
-    "16": "rt-quotes.png",
-    "48": "rt-quotes.png",
-    "128": "rt-quotes.png"
+    "16": "16.png",
+    "48": "48.png",
+    "128": "128.png"
   },
   "content_security_policy": "script-src 'self' 'sha256-qfrhMW9eTbaLovJo7vyzLPA2PQa8LfNWL1QWi8ICtw8='; object-src 'self'",
-  "permissions": ["*://*.tmx.com/*", "*://*.yahoo.com/*", "*://*.finnhub.io/*"]
+  "permissions": ["*://*.yahoo.com/*"]
 }
