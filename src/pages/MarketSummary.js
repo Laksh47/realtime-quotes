@@ -29,23 +29,39 @@ class MarketSummary extends React.Component {
   render() {
     let { stocks, isLoading } = this.state;
     return (
-      <div className="page">
-        <div className="settings clearfix">
-          <div className="time">{utils.getTimestamp()}</div>
-          <div
-            className="reload-btn"
-            onClick={this.reloadStockPrices.bind(this)}
-          >
-            <IconRefresh />
+      <div>
+        <div className="page">
+          <div className="settings clearfix">
+            <div className="time">{utils.getTimestamp()}</div>
+            <div
+              className="reload-btn"
+              onClick={this.reloadStockPrices.bind(this)}
+            >
+              <IconRefresh />
+            </div>
+          </div>
+
+          <div className="indices">
+            {isLoading ? (
+              <SemipolarLoading />
+            ) : (
+              stocks.map((stock, index) => <Ticker stock={stock} key={index} />)
+            )}
           </div>
         </div>
-
-        <div className="indices">
-          {isLoading ? (
-            <SemipolarLoading />
-          ) : (
-            stocks.map((stock, index) => <Ticker stock={stock} key={index} />)
-          )}
+        <div class="footer">
+          <a
+            href="https://ca.finance.yahoo.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="https://poweredby.yahoo.com/white.png"
+              width="134"
+              height="29"
+              alt="Powered by Yahoo API"
+            />
+          </a>
         </div>
       </div>
     );

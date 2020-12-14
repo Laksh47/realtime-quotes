@@ -106,42 +106,44 @@ class Watchlist extends React.Component {
   render() {
     let { stocks, searchResults, isLoading } = this.state;
     return (
-      <div className="watchlist">
-        <div className="settings clearfix">
-          <div className="time">{utils.getTimestamp()}</div>
-          <div className="reload-btn" onClick={this.reloadStocks.bind(this)}>
-            <IconRefresh />
+      <div>
+        <div className="page">
+          <div className="settings clearfix">
+            <div className="time">{utils.getTimestamp()}</div>
+            <div className="reload-btn" onClick={this.reloadStocks.bind(this)}>
+              <IconRefresh />
+            </div>
           </div>
-        </div>
-        <div className="watchlist-tickers">
-          <div className="search">
-            <input
-              className="search-bar"
-              placeholder="search for stocks"
-              onChange={(evt) => this.search(evt)}
-              list="search-results"
-              ref={this.textInput}
-            ></input>
-            {searchResults.length > 0 && (
-              <div id="search-results" className="search-results">
-                {searchResults.map((result, index) => {
-                  return (
-                    <div
-                      className="search-result"
-                      onClick={() => this.addAndReload(result.symbol)}
-                      key={result.symbol}
-                      value={result.symbol}
-                    >
-                      <div className="symbol">{result.symbol}</div>
-                      <div className="longname">
-                        {result.longname} ({result.typeDisp} - {result.exchange}
-                        )
+          <div className="watchlist-tickers">
+            <div className="search">
+              <input
+                className="search-bar"
+                placeholder="search for stocks"
+                onChange={(evt) => this.search(evt)}
+                list="search-results"
+                ref={this.textInput}
+              ></input>
+              {searchResults.length > 0 && (
+                <div id="search-results" className="search-results">
+                  {searchResults.map((result, index) => {
+                    return (
+                      <div
+                        className="search-result"
+                        onClick={() => this.addAndReload(result.symbol)}
+                        key={result.symbol}
+                        value={result.symbol}
+                      >
+                        <div className="symbol">{result.symbol}</div>
+                        <div className="longname">
+                          {result.longname} ({result.typeDisp} -{" "}
+                          {result.exchange})
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
 
           <div>
@@ -163,6 +165,20 @@ class Watchlist extends React.Component {
               )}
             </div>
           </div>
+        </div>
+        <div class="footer">
+          <a
+            href="https://ca.finance.yahoo.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="https://poweredby.yahoo.com/white.png"
+              width="134"
+              height="29"
+              alt="Powered by Yahoo API"
+            />
+          </a>
         </div>
       </div>
     );
