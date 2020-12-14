@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1607969453922" clover="3.2.0">
+  <project timestamp="1607969453922" name="All files">
+    <metrics statements="129" coveredstatements="117" conditionals="32" coveredconditionals="26" methods="45" coveredmethods="41" elements="206" coveredelements="184" complexity="0" loc="129" ncloc="129" packages="5" files="9" classes="9"/>
+    <package name="src">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="App.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/App.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.adapters">
+      <metrics statements="25" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+      <file name="yahoo.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/adapters/yahoo.js">
+        <metrics statements="25" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="26" count="9" type="stmt"/>
+        <line num="36" count="7" type="stmt"/>
+        <line num="37" count="7" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="52" count="7" type="stmt"/>
+        <line num="53" count="7" type="stmt"/>
+        <line num="54" count="7" type="stmt"/>
+        <line num="55" count="7" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="63" count="5" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.common">
+      <metrics statements="23" coveredstatements="20" conditionals="6" coveredconditionals="5" methods="6" coveredmethods="4"/>
+      <file name="constants.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/common/constants.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+      </file>
+      <file name="utils.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/common/utils.js">
+        <metrics statements="21" coveredstatements="18" conditionals="6" coveredconditionals="5" methods="6" coveredmethods="4"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="29" type="stmt"/>
+        <line num="5" count="29" type="stmt"/>
+        <line num="6" count="29" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="22" coveredstatements="19" conditionals="10" coveredconditionals="7" methods="11" coveredmethods="9"/>
+      <file name="Tab.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/components/Tab.js">
+        <metrics statements="6" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+      <file name="Tabs.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/components/Tabs.js">
+        <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="5"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+      </file>
+      <file name="Ticker.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/components/Ticker.js">
+        <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.pages">
+      <metrics statements="58" coveredstatements="56" conditionals="16" coveredconditionals="14" methods="20" coveredmethods="20"/>
+      <file name="MarketSummary.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/pages/MarketSummary.js">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="30" count="14" type="stmt"/>
+        <line num="31" count="14" type="stmt"/>
+        <line num="48" count="3" type="stmt"/>
+      </file>
+      <file name="Watchlist.js" path="/Users/lakshmanan/Desktop/Repositories/realtime-quotes/src/pages/Watchlist.js">
+        <metrics statements="49" coveredstatements="47" conditionals="14" coveredconditionals="12" methods="15" coveredmethods="15"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="49" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="54" count="4" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="60" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="81" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="107" count="15" type="stmt"/>
+        <line num="108" count="15" type="stmt"/>
+        <line num="122" count="2" type="stmt"/>
+        <line num="129" count="4" type="stmt"/>
+        <line num="132" count="1" type="stmt"/>
+        <line num="158" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
