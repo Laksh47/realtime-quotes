@@ -8,7 +8,7 @@ import { isMarketOpen } from "../common/utils";
 
 class Ticker extends React.Component {
   render() {
-    const { stock, showActions, onDelete, routeToStats } = this.props;
+    const { stock, showActions, onDelete, showStats } = this.props;
     return (
       <div className="index">
         <div className="first-row clearfix">
@@ -24,7 +24,7 @@ class Ticker extends React.Component {
             {showActions && (
               <span className="quick-actions">
                 <StatsIcon
-                  onClick={() => routeToStats(stock.ticker)}
+                  onClick={() => showStats(stock.ticker)}
                   className="stats-btn"
                 />
                 <DeleteIcon

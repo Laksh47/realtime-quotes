@@ -224,6 +224,22 @@ a {
   font-size: 18px;
 }
 
+/* ticker stats component css */
+
+.back-btn {
+  width: 25px;
+  height: 25px;
+  fill: #bfb8b8;
+  padding: 20px 5px;
+}
+
+.back-btn,
+.back-btn-text {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
 // market summary css
 
 .indices {
