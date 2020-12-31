@@ -197,20 +197,20 @@ class Watchlist extends React.Component {
               </div>
             </div>
           )}
-          <div className="footer">
-            <a
-              href="https://ca.finance.yahoo.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src="https://poweredby.yahoo.com/white.png"
-                width="134"
-                height="29"
-                alt="Powered by Yahoo API"
-              />
-            </a>
-          </div>
+        </div>
+        <div className="footer">
+          <a
+            href="https://ca.finance.yahoo.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="https://poweredby.yahoo.com/white.png"
+              width="134"
+              height="29"
+              alt="Powered by Yahoo API"
+            />
+          </a>
         </div>
       </div>
     );
