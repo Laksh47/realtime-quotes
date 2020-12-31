@@ -32,18 +32,20 @@ class TickerStats extends React.Component {
 
     return (
       <div>
-        <div onClick={() => onClose()}>
-          <BackBtnIcon className="back-btn"></BackBtnIcon>
-          <span className="back-btn-text">{"Go Back"}</span>
-        </div>
-        <div className="view-more">
-          <a
-            href={`https://ca.finance.yahoo.com/quote/${ticker}/key-statistics`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            View more
-          </a>
+        <div>
+          <div onClick={() => onClose()}>
+            <BackBtnIcon className="back-btn"></BackBtnIcon>
+            <span className="back-btn-text">{"Go Back"}</span>
+          </div>
+          <div className="view-more">
+            <a
+              href={`https://ca.finance.yahoo.com/quote/${ticker}/key-statistics`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View more
+            </a>
+          </div>
         </div>
         {isLoading ? (
           <SemipolarLoading />

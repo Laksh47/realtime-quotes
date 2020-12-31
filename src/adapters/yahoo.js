@@ -14,13 +14,12 @@ const marketIndices = [
   "^TNX",
   "^VIX",
 ];
-const summaryUrl =
-  "https://cors-anywhere.herokuapp.com/https://query2.finance.yahoo.com/v7/finance/quote";
+const summaryUrl = "https://query2.finance.yahoo.com/v7/finance/quote";
 
 const quotesCount = 5;
-const searchUrl = `https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v1/finance/search?quotesCount=${quotesCount}`;
+const searchUrl = `https://query1.finance.yahoo.com/v1/finance/search?quotesCount=${quotesCount}`;
 
-const statsUrl = `https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v10/finance/quoteSummary`;
+const statsUrl = `https://query1.finance.yahoo.com/v10/finance/quoteSummary`;
 
 // const yahooFinancialsModules = [
 //   "incomeStatementHistory, cashflowStatementHistory, balanceSheetHistory, incomeStatementHistoryQuarterly, cashflowStatementHistoryQuarterly, balanceSheetHistoryQuarterly",
