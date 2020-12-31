@@ -125,13 +125,19 @@ a {
   background-color: $bear-color;
 }
 
-.delete-btn {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  fill: white;
+.quick-actions {
   margin-right: 5px;
-  display: none;
+
+  .delete-btn,
+  .stats-btn {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    fill: #bfb8b8;
+    margin-right: 7px;
+    display: inline-block;
+    vertical-align: bottom;
+  }
 }
 
 .index {
@@ -146,11 +152,6 @@ a {
 
   &:hover {
     background-color: #3a3e3e;
-
-    .delete-btn {
-      display: inline-block;
-      vertical-align: bottom;
-    }
   }
 }
 

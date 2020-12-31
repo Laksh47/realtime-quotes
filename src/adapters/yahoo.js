@@ -14,10 +14,28 @@ const marketIndices = [
   "^TNX",
   "^VIX",
 ];
-const summaryUrl = "https://query2.finance.yahoo.com/v7/finance/quote";
+const summaryUrl =
+  "https://cors-anywhere.herokuapp.com/https://query2.finance.yahoo.com/v7/finance/quote";
 
 const quotesCount = 5;
-const searchUrl = `https://query1.finance.yahoo.com/v1/finance/search?quotesCount=${quotesCount}`;
+const searchUrl = `https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v1/finance/search?quotesCount=${quotesCount}`;
+
+const statsUrl = `https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v10/finance/quoteSummary`;
+
+const yahooFinancialsModules = [
+  "incomeStatementHistory, cashflowStatementHistory, balanceSheetHistory, incomeStatementHistoryQuarterly, cashflowStatementHistoryQuarterly, balanceSheetHistoryQuarterly",
+];
+const yahooStatsModules = [
+  "defaultKeyStatistics",
+  "financialsTemplate",
+  "price",
+  "financialData",
+  "quoteType",
+  "calendarEvents",
+  "summaryDetail",
+  "symbol",
+  "pageViews",
+];
 
 const { log } = console;
 
@@ -46,6 +64,62 @@ const yahooAPI = {
         marketState: stock.marketState,
       };
     });
+  },
+
+  parseStatsResponse: (yahooResponse) => {
+    const stats =
+      yahooResponse["data"]["quoteSummary"]["result"][0][
+        "defaultKeyStatistics"
+      ];
+    const financials =
+      yahooResponse["data"]["quoteSummary"]["result"][0]["financialData"];
+    const summaryDetails =
+      yahooResponse["data"]["quoteSummary"]["result"][0]["summaryDetail"];
+    const quoteType =
+      yahooResponse["data"]["quoteSummary"]["result"][0]["quoteType"];
+    const price = yahooResponse["data"]["quoteSummary"]["result"][0]["price"];
+
+    return {
+      "52WeekChange": stats["52WeekChange"]["fmt"],
+      beta: stats["beta"]["fmt"],
+      priceToBook: stats["priceToBook"]["fmt"],
+      sharesOutstanding: stats["sharesOutstanding"]["fmt"],
+      enterpriseValue: stats["enterpriseValue"]["fmt"],
+      currentRatio: financials["currentRatio"]["fmt"],
+      debtToEquity: financials["debtToEquity"]["fmt"],
+      returnOnEquity: financials["returnOnEquity"]["fmt"],
+      totalDebt: financials["totalDebt"]["fmt"],
+      totalRevenue: financials["totalRevenue"]["fmt"],
+      totalCashPerShare: financials["totalCashPerShare"]["fmt"],
+      marketCap: summaryDetails["marketCap"]["fmt"],
+      volume: summaryDetails["volume"]["fmt"],
+      fiftyDayAverage: summaryDetails["fiftyDayAverage"]["fmt"],
+      twoHundredDayAverage: summaryDetails["twoHundredDayAverage"]["fmt"],
+      fiftyTwoWeekLow: summaryDetails["fiftyTwoWeekLow"]["fmt"],
+      fiftyTwoWeekHigh: summaryDetails["fiftyTwoWeekHigh"]["fmt"],
+      dividendYield: summaryDetails["dividendYield"]["fmt"],
+      dividendRate: summaryDetails["dividendRate"]["fmt"],
+      bid: summaryDetails["bid"]["fmt"],
+      ask: summaryDetails["ask"]["fmt"],
+      forwardPE: summaryDetails["forwardPE"]["fmt"],
+      symbol: quoteType["symbol"],
+      shortName: quoteType["shortName"],
+      price: price["regularMarketPrice"]["fmt"],
+      currency: price["currency"],
+    };
+  },
+
+  getStats: async (symbol) => {
+    const targetUrl = `${statsUrl}/${symbol}?formatted=true&modules=${yahooStatsModules.join(
+      "%2C"
+    )}`;
+    try {
+      const response = await axios(targetUrl, yahooAPI.buildRequest());
+      return yahooAPI.parseStatsResponse(response);
+    } catch (err) {
+      log(err);
+      return Promise.resolve([]);
+    }
   },
 
   getSummary: async (symbols) => {

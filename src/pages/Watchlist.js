@@ -103,6 +103,11 @@ class Watchlist extends React.Component {
     this.updateStorage(symbols);
   }
 
+  async routeToStats(symbol) {
+    const result = await yahooAPI.getStats(symbol);
+    console.log(result);
+  }
+
   render() {
     let { stocks, searchResults, isLoading } = this.state;
     return (
@@ -158,15 +163,16 @@ class Watchlist extends React.Component {
                   <Ticker
                     stock={stock}
                     key={index}
-                    showDelete={true}
+                    showActions={true}
                     onDelete={this.deleteAndUpdate.bind(this)}
+                    routeToStats={this.routeToStats.bind(this)}
                   />
                 ))
               )}
             </div>
           </div>
         </div>
-        <div class="footer">
+        <div className="footer">
           <a
             href="https://ca.finance.yahoo.com/"
             target="_blank"
