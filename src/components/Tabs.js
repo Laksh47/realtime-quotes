@@ -5,7 +5,7 @@ class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTabIndex: 0,
+      activeTabIndex: 1,
     };
     this.handleTabClick = this.handleTabClick.bind(this);
   }
