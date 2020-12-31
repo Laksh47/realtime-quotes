@@ -240,6 +240,14 @@ a {
   cursor: pointer;
 }
 
+.stats-data {
+  table {
+    overflow-y: scroll;
+    height: 250px;
+    display: block;
+  }
+}
+
 // market summary css
 
 .indices {

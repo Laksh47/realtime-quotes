@@ -22,9 +22,9 @@ const searchUrl = `https://cors-anywhere.herokuapp.com/https://query1.finance.ya
 
 const statsUrl = `https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v10/finance/quoteSummary`;
 
-const yahooFinancialsModules = [
-  "incomeStatementHistory, cashflowStatementHistory, balanceSheetHistory, incomeStatementHistoryQuarterly, cashflowStatementHistoryQuarterly, balanceSheetHistoryQuarterly",
-];
+// const yahooFinancialsModules = [
+//   "incomeStatementHistory, cashflowStatementHistory, balanceSheetHistory, incomeStatementHistoryQuarterly, cashflowStatementHistoryQuarterly, balanceSheetHistoryQuarterly",
+// ];
 const yahooStatsModules = [
   "defaultKeyStatistics",
   "financialsTemplate",
@@ -85,12 +85,15 @@ const yahooAPI = {
       priceToBook: stats["priceToBook"]["fmt"],
       sharesOutstanding: stats["sharesOutstanding"]["fmt"],
       enterpriseValue: stats["enterpriseValue"]["fmt"],
+
       currentRatio: financials["currentRatio"]["fmt"],
       debtToEquity: financials["debtToEquity"]["fmt"],
       returnOnEquity: financials["returnOnEquity"]["fmt"],
       totalDebt: financials["totalDebt"]["fmt"],
       totalRevenue: financials["totalRevenue"]["fmt"],
       totalCashPerShare: financials["totalCashPerShare"]["fmt"],
+      ebitda: financials["ebitda"]["fmt"],
+
       marketCap: summaryDetails["marketCap"]["fmt"],
       volume: summaryDetails["volume"]["fmt"],
       fiftyDayAverage: summaryDetails["fiftyDayAverage"]["fmt"],
@@ -102,8 +105,11 @@ const yahooAPI = {
       bid: summaryDetails["bid"]["fmt"],
       ask: summaryDetails["ask"]["fmt"],
       forwardPE: summaryDetails["forwardPE"]["fmt"],
-      symbol: quoteType["symbol"],
+      trailingPE: summaryDetails["trailingPE"]["fmt"],
+
+      ticker: quoteType["symbol"],
       shortName: quoteType["shortName"],
+
       price: price["regularMarketPrice"]["fmt"],
       currency: price["currency"],
     };
