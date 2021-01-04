@@ -125,13 +125,19 @@ a {
   background-color: $bear-color;
 }
 
-.delete-btn {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  fill: white;
+.quick-actions {
   margin-right: 5px;
-  display: none;
+
+  .delete-btn,
+  .stats-btn {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    fill: #bfb8b8;
+    margin-right: 7px;
+    display: inline-block;
+    vertical-align: bottom;
+  }
 }
 
 .index {
@@ -146,11 +152,6 @@ a {
 
   &:hover {
     background-color: #3a3e3e;
-
-    .delete-btn {
-      display: inline-block;
-      vertical-align: bottom;
-    }
   }
 }
 
@@ -221,6 +222,50 @@ a {
   text-align: center;
   cursor: pointer;
   font-size: 18px;
+}
+
+/* ticker stats component css */
+.ticker-stats-header {
+  .back-btn-wrapper,
+  .view-more {
+    display: inline-block;
+    vertical-align: middle;
+    width: 48%;
+  }
+}
+
+.back-btn {
+  width: 25px;
+  height: 25px;
+  fill: #bfb8b8;
+  padding: 20px 5px;
+}
+
+.back-btn,
+.back-btn-text {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.view-more {
+  text-align: right;
+}
+
+.stats-data {
+  h2 {
+    text-align: center;
+  }
+
+  table {
+    font-size: 16px;
+    margin: 0 auto;
+    overflow-y: scroll;
+
+    td {
+      padding: 5px 25px;
+    }
+  }
 }
 
 // market summary css

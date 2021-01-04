@@ -1,6 +1,7 @@
 import React from "react";
 
 import Ticker from "../components/Ticker";
+import TickerStats from "../components/TickerStats";
 import yahooAPI from "../adapters/yahoo";
 import * as constants from "../common/constants";
 import * as utils from "../common/utils";
@@ -17,6 +18,8 @@ class Watchlist extends React.Component {
       symbols: [],
       searchResults: [],
       stocks: [],
+      showStatsPage: false,
+      statsTicker: "",
     };
 
     this.textInput = React.createRef();
@@ -103,70 +106,99 @@ class Watchlist extends React.Component {
     this.updateStorage(symbols);
   }
 
+  showStats(symbol) {
+    console.log(symbol);
+    this.setState({ showStatsPage: true, statsTicker: symbol });
+  }
+
+  hideStats() {
+    this.setState({ showStatsPage: false, statsTicker: "" });
+  }
+
   render() {
-    let { stocks, searchResults, isLoading } = this.state;
+    let {
+      stocks,
+      searchResults,
+      isLoading,
+      showStatsPage,
+      statsTicker,
+    } = this.state;
+
     return (
       <div>
         <div className="page">
-          <div className="settings clearfix">
-            <div className="time">{utils.getTimestamp()}</div>
-            <div className="reload-btn" onClick={this.reloadStocks.bind(this)}>
-              <IconRefresh />
-            </div>
-          </div>
-          <div className="watchlist-tickers">
-            <div className="search">
-              <input
-                className="search-bar"
-                placeholder="search for stocks"
-                onChange={(evt) => this.search(evt)}
-                list="search-results"
-                ref={this.textInput}
-              ></input>
-              {searchResults.length > 0 && (
-                <div id="search-results" className="search-results">
-                  {searchResults.map((result, index) => {
-                    return (
-                      <div
-                        className="search-result"
-                        onClick={() => this.addAndReload(result.symbol)}
-                        key={result.symbol}
-                        value={result.symbol}
-                      >
-                        <div className="symbol">{result.symbol}</div>
-                        <div className="longname">
-                          {result.longname} ({result.typeDisp} -{" "}
-                          {result.exchange})
-                        </div>
-                      </div>
-                    );
-                  })}
+          {showStatsPage ? (
+            <TickerStats
+              ticker={statsTicker}
+              onClose={this.hideStats.bind(this)}
+            ></TickerStats>
+          ) : (
+            <div>
+              <div className="settings clearfix">
+                <div className="time">{utils.getTimestamp()}</div>
+                <div
+                  className="reload-btn"
+                  onClick={this.reloadStocks.bind(this)}
+                >
+                  <IconRefresh />
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
+              <div className="watchlist-tickers">
+                <div className="search">
+                  <input
+                    className="search-bar"
+                    placeholder="search for stocks"
+                    onChange={(evt) => this.search(evt)}
+                    list="search-results"
+                    ref={this.textInput}
+                  ></input>
+                  {searchResults.length > 0 && (
+                    <div id="search-results" className="search-results">
+                      {searchResults.map((result, index) => {
+                        return (
+                          <div
+                            className="search-result"
+                            onClick={() => this.addAndReload(result.symbol)}
+                            key={result.symbol}
+                            value={result.symbol}
+                          >
+                            <div className="symbol">{result.symbol}</div>
+                            <div className="longname">
+                              {result.longname} ({result.typeDisp} -{" "}
+                              {result.exchange})
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
 
-          <div>
-            {stocks.length === 0 && (
-              <h4 align="center">Search and add tickers to track them!</h4>
-            )}
-            <div className="indices">
-              {isLoading ? (
-                <SemipolarLoading />
-              ) : (
-                stocks.map((stock, index) => (
-                  <Ticker
-                    stock={stock}
-                    key={index}
-                    showDelete={true}
-                    onDelete={this.deleteAndUpdate.bind(this)}
-                  />
-                ))
-              )}
+              <div>
+                {stocks.length === 0 && (
+                  <h4 align="center">Search and add tickers to track them!</h4>
+                )}
+                <div className="indices">
+                  {isLoading ? (
+                    <SemipolarLoading />
+                  ) : (
+                    stocks.map((stock, index) => (
+                      <Ticker
+                        stock={stock}
+                        key={index}
+                        showActions={true}
+                        onDelete={this.deleteAndUpdate.bind(this)}
+                        showStats={this.showStats.bind(this)}
+                      />
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
-        <div class="footer">
+        <div className="footer">
           <a
             href="https://ca.finance.yahoo.com/"
             target="_blank"

@@ -49,7 +49,7 @@ class MarketSummary extends React.Component {
             )}
           </div>
         </div>
-        <div class="footer">
+        <div className="footer">
           <a
             href="https://ca.finance.yahoo.com/"
             target="_blank"
