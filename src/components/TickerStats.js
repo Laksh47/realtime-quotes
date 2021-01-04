@@ -60,6 +60,10 @@ class TickerStats extends React.Component {
                     <td>{stats.ticker}</td>
                   </tr>
                   <tr>
+                    <td>Company Name</td>
+                    <td>{stats.shortName}</td>
+                  </tr>
+                  <tr>
                     <td>Current Price</td>
                     <td>{stats.price}</td>
                   </tr>

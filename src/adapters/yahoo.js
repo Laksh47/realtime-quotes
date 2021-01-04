@@ -70,8 +70,8 @@ const yahooAPI = {
       yahooResponse["data"]["quoteSummary"]["result"][0][
         "defaultKeyStatistics"
       ];
-    const financials =
-      yahooResponse["data"]["quoteSummary"]["result"][0]["financialData"];
+    // const financials =
+    //   yahooResponse["data"]["quoteSummary"]["result"][0]["financialData"];
     const summaryDetails =
       yahooResponse["data"]["quoteSummary"]["result"][0]["summaryDetail"];
     const quoteType =
@@ -79,37 +79,19 @@ const yahooAPI = {
     const price = yahooResponse["data"]["quoteSummary"]["result"][0]["price"];
 
     return {
-      "52WeekChange": stats["52WeekChange"]["fmt"],
-      beta: stats["beta"]["fmt"],
-      priceToBook: stats["priceToBook"]["fmt"],
-      sharesOutstanding: stats["sharesOutstanding"]["fmt"],
-      enterpriseValue: stats["enterpriseValue"]["fmt"],
+      priceToBook: stats["priceToBook"]?.["fmt"],
 
-      currentRatio: financials["currentRatio"]["fmt"],
-      debtToEquity: financials["debtToEquity"]["fmt"],
-      returnOnEquity: financials["returnOnEquity"]["fmt"],
-      totalDebt: financials["totalDebt"]["fmt"],
-      totalRevenue: financials["totalRevenue"]["fmt"],
-      totalCashPerShare: financials["totalCashPerShare"]["fmt"],
-      ebitda: financials["ebitda"]["fmt"],
-
-      marketCap: summaryDetails["marketCap"]["fmt"],
-      volume: summaryDetails["volume"]["fmt"],
-      fiftyDayAverage: summaryDetails["fiftyDayAverage"]["fmt"],
-      twoHundredDayAverage: summaryDetails["twoHundredDayAverage"]["fmt"],
-      fiftyTwoWeekLow: summaryDetails["fiftyTwoWeekLow"]["fmt"],
-      fiftyTwoWeekHigh: summaryDetails["fiftyTwoWeekHigh"]["fmt"],
-      dividendYield: summaryDetails["dividendYield"]["fmt"] || "-",
-      dividendRate: summaryDetails["dividendRate"]["fmt"],
-      bid: summaryDetails["bid"]["fmt"],
-      ask: summaryDetails["ask"]["fmt"],
-      forwardPE: summaryDetails["forwardPE"]["fmt"] || "-",
-      trailingPE: summaryDetails["trailingPE"]["fmt"] || "-",
+      marketCap: summaryDetails["marketCap"]?.["fmt"],
+      volume: summaryDetails["volume"]?.["fmt"],
+      fiftyTwoWeekLow: summaryDetails["fiftyTwoWeekLow"]?.["fmt"],
+      fiftyTwoWeekHigh: summaryDetails["fiftyTwoWeekHigh"]?.["fmt"],
+      dividendYield: summaryDetails["dividendYield"]?.["fmt"] || "-",
+      forwardPE: summaryDetails["forwardPE"]?.["fmt"] || "-",
+      trailingPE: summaryDetails["trailingPE"]?.["fmt"] || "-",
 
       ticker: quoteType["symbol"],
       shortName: quoteType["shortName"],
-
-      price: price["regularMarketPrice"]["fmt"],
+      price: price["regularMarketPrice"]?.["fmt"],
       currency: price["currency"],
     };
   },
