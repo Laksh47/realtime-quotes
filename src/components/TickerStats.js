@@ -65,7 +65,9 @@ class TickerStats extends React.Component {
                   </tr>
                   <tr>
                     <td>Current Price</td>
-                    <td>{stats.price}</td>
+                    <td>
+                      {stats.price} {stats.currency}
+                    </td>
                   </tr>
                   <tr>
                     <td>PB Ratio</td>
