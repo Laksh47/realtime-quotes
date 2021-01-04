@@ -225,6 +225,14 @@ a {
 }
 
 /* ticker stats component css */
+.ticker-stats-header {
+  .back-btn-wrapper,
+  .view-more {
+    display: inline-block;
+    vertical-align: middle;
+    width: 48%;
+  }
+}
 
 .back-btn {
   width: 25px;
@@ -240,11 +248,23 @@ a {
   cursor: pointer;
 }
 
+.view-more {
+  text-align: right;
+}
+
 .stats-data {
+  h2 {
+    text-align: center;
+  }
+
   table {
+    font-size: 16px;
+    margin: 0 auto;
     overflow-y: scroll;
-    height: 250px;
-    display: block;
+
+    td {
+      padding: 5px 25px;
+    }
   }
 }
 

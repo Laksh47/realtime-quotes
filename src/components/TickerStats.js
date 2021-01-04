@@ -28,12 +28,12 @@ class TickerStats extends React.Component {
     let { ticker, onClose } = this.props;
     let { stats, isLoading } = this.state;
 
-    const data = Object.entries(stats);
+    // const data = Object.entries(stats);
 
     return (
       <div>
-        <div>
-          <div onClick={() => onClose()}>
+        <div className="ticker-stats-header">
+          <div className="back-btn-wrapper" onClick={() => onClose()}>
             <BackBtnIcon className="back-btn"></BackBtnIcon>
             <span className="back-btn-text">{"Go Back"}</span>
           </div>
@@ -54,14 +54,44 @@ class TickerStats extends React.Component {
             <h2>Key Statistics</h2>
             <div>
               <table>
-                {data.map(([key, value], index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{key}</td>
-                      <td>{value}</td>
-                    </tr>
-                  );
-                })}
+                <tbody>
+                  <tr>
+                    <td>Ticker</td>
+                    <td>{stats.ticker}</td>
+                  </tr>
+                  <tr>
+                    <td>Current Price</td>
+                    <td>{stats.price}</td>
+                  </tr>
+                  <tr>
+                    <td>PB Ratio</td>
+                    <td>{stats.priceToBook}</td>
+                  </tr>
+                  <tr>
+                    <td>Trailing PE / Forward PE</td>
+                    <td>
+                      {stats.trailingPE} / {stats.forwardPE}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>52 Week Low / 52 Week High</td>
+                    <td>
+                      {stats.fiftyTwoWeekLow} / {stats.fiftyTwoWeekHigh}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Dividend Yield</td>
+                    <td>{stats.dividendYield}</td>
+                  </tr>
+                  <tr>
+                    <td>Market Cap</td>
+                    <td>{stats.marketCap}</td>
+                  </tr>
+                  <tr>
+                    <td>Volume</td>
+                    <td>{stats.volume}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
