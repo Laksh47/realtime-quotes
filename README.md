@@ -8,7 +8,9 @@
 
 Extension available on all three major browsers,
 
-Chrome: https://chrome.google.com/webstore/detail/realtime-quotes/jhfkjpkleinhjlgmofanmgoepmifcgek
+Chrome: https://chrome.google.com/webstore/detail/realtime-quotes/jhfkjpkleinhjlgmofanmgoepmifcgek (322 users as of January 04, 2021!❤️)
+
+![Screen Shot 2021-01-04 at 7 10 24 PM](https://user-images.githubusercontent.com/10058508/103592254-92e37680-4ec0-11eb-9a20-98993ceea8ac.png)
 
 Firefox: https://addons.mozilla.org/en-US/firefox/addon/realtime-quotes/
 
@@ -17,7 +19,6 @@ Edge: https://microsoftedge.microsoft.com/addons/detail/realtime-quotes/gfiihgeo
 Full story on product hunt launch here: https://www.producthunt.com/posts/realtime-quotes-stocks
 
 Youtube video for the product: https://www.youtube.com/watch?v=XzUNwba0Mws
-
 
 # Running the app, generating build, running tests, and coverage
 
@@ -38,6 +39,10 @@ Youtube video for the product: https://www.youtube.com/watch?v=XzUNwba0Mws
 
 ## Remove tickers
 
-![remove](https://user-images.githubusercontent.com/10058508/101962528-68acda80-3bda-11eb-94c9-9fd883198e42.png)
+![Screen Shot 2021-01-04 at 6 43 51 PM](https://user-images.githubusercontent.com/10058508/103590991-df2cb780-4ebc-11eb-9675-fb85e74b6a32.png)
+
+## Ticker Stats 
+
+![Screen Shot 2021-01-04 at 6 44 01 PM](https://user-images.githubusercontent.com/10058508/103590992-e05de480-4ebc-11eb-83ed-3b12172db505.png)
 
 # More updates to the extension coming soon!
