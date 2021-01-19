@@ -51,7 +51,7 @@ a {
 }
 
 .truncate {
-  width: 60%;
+  width: 55%;
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -173,7 +173,7 @@ a {
 
 .current-price,
 .name {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -304,7 +304,7 @@ a {
       }
 
       .longname {
-        width: 70%;
+        width: 74%;
         text-align: right;
       }
     }
