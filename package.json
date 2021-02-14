@@ -19,7 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test '--coverage' '--watchAll=false'",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/.",
+    "lint:fix": "npm run lint -- --fix"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -34,9 +36,10 @@
     ]
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "eslint:recommended",
+      "plugin:react/recommended"
     ]
   },
   "browserslist": {
@@ -50,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.21.5"
   }
 }
