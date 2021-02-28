@@ -8,9 +8,9 @@
 
 Extension available on all three major browsers,
 
-Chrome: https://chrome.google.com/webstore/detail/realtime-quotes/jhfkjpkleinhjlgmofanmgoepmifcgek (322 users as of January 04, 2021!❤️)
+Chrome: https://chrome.google.com/webstore/detail/realtime-quotes/jhfkjpkleinhjlgmofanmgoepmifcgek (❤️ 632 users as of Feb 28, 2021!)
 
-![Screen Shot 2021-01-04 at 7 10 24 PM](https://user-images.githubusercontent.com/10058508/103592254-92e37680-4ec0-11eb-9a20-98993ceea8ac.png)
+![Screen Shot 2021-01-04 at 7 10 24 PM](https://user-images.githubusercontent.com/10058508/109435319-eddcaa00-79e7-11eb-88a4-95e826386b39.png)
 
 Firefox: https://addons.mozilla.org/en-US/firefox/addon/realtime-quotes/
 
